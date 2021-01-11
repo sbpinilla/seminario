@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstudianteAcudienteCreateDlg" widgetVar="EstudianteAcudienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{app.CreateEstudianteAcudienteTitle}" closeOnEscape="true">
+
+            <h:form id="EstudianteAcudienteCreateForm">
+
+                <h:panelGroup id="display" rendered="#{estudianteAcudienteController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{app.CreateEstudianteAcudienteLabel_parentesco}" for="parentesco" />
+                        <p:inputText id="parentesco" value="#{estudianteAcudienteController.selected.parentesco}" title="#{app.CreateEstudianteAcudienteTitle_parentesco}" required="true" requiredMessage="#{app.CreateEstudianteAcudienteRequiredMessage_parentesco}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{app.CreateEstudianteAcudienteLabel_idAcudiente}" for="idAcudiente" />
+                        <p:selectOneMenu id="idAcudiente" value="#{estudianteAcudienteController.selected.idAcudiente}" required="true" requiredMessage="#{app.CreateEstudianteAcudienteRequiredMessage_idAcudiente}" converter="acudienteConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{acudienteController.items}"
+                                           var="idAcudienteItem"
+                                           itemValue="#{idAcudienteItem}"
+                                           itemLabel="#{idAcudienteItem.nombres} #{idAcudienteItem.apellidos}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{app.CreateEstudianteAcudienteLabel_idEstudiante}" for="idEstudiante" />
+                        <p:selectOneMenu id="idEstudiante" value="#{estudianteAcudienteController.selected.idEstudiante}" required="true" requiredMessage="#{app.CreateEstudianteAcudienteRequiredMessage_idEstudiante}" converter="estudianteConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{estudianteController.items}"
+                                           var="idEstudianteItem"
+                                           itemValue="#{idEstudianteItem}"
+                                           itemLabel="#{idEstudianteItem.nombres} #{idEstudianteItem.apellidos}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{estudianteAcudienteController.saveNew}" value="#{app.Save}" update="display,:EstudianteAcudienteListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('EstudianteAcudienteCreateDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('EstudianteAcudienteCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

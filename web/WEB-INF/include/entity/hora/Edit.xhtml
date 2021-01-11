@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="HoraEditDlg" widgetVar="HoraEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.EditHoraTitle}" closeOnEscape="true">
+
+            <h:form id="HoraEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{horaController.selected != null}">
+
+
+                        <h:outputLabel value="#{app.EditHoraLabel_idHora}" for="idHora" />
+                        <h:outputText id="idHora" value="#{horaController.selected.idHora}" />
+
+                        <p:outputLabel value="#{app.EditHoraLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{horaController.selected.nombre}" title="#{app.EditHoraTitle_nombre}" required="true" requiredMessage="#{app.EditHoraRequiredMessage_nombre}" size="100" maxlength="100"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{horaController.save}" value="#{app.Save}" update="display,:HoraListForm:datalist,:HoraListForm:HoraDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('HoraEditDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('HoraEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+            <meta name="apple-mobile-web-app-capable" content="yes" />
+        </f:facet>
+        <title>PrimeFaces Ultima</title>
+        <h:outputScript name="js/ripple.js" library="ultima-layout" />
+        
+
+    </h:head>
+
+    <h:body styleClass="landing-body">
+        <div class="landing-wrapper">
+            <div id="header">
+                <div class="header-top clearfix">
+                    <span class="logo"></span>
+                    
+                    <a id="menu-button" href="#">
+                       <span class="fa fa-bars"></span>
+                    </a>
+                    <ul id="menu" class="animated">
+                       <li><a href="#"><span>Inicio</span></a></li>
+                       <li><a href="#introduction"><span>Introducción</span></a></li>
+                       <li><a href="#features"><span>Caracteristicas</span></a></li>
+                       <li><a href="#promotion"><span>Promoción</span></a></li>
+                       <li><a href="#pricing"><span>Precios</span></a></li>
+                       <li><a href="#video"><span>Video</span></a></li>
+                       <li><a href="#{request.contextPath}/faces/login.xhtml"><span>ENTRAR</span></a></li>
+                    </ul>
+                </div>
+                
+                <div class="header-content clearfix">
+                    <h1>TeacherKitSchools</h1>
+                    <p:button  value="Sign Up Now" styleClass="secondary"/>
+                </div>
+            </div>
+            
+            <div id="features">
+                <h2>¿Qué es TeacherKitSchools?</h2>
+                <p>TeacherKitSchools es una aplicación simple, fácil de usar y rica en características que hace que la enseñanza diaria sea muy fácil al eliminar el dolor de cabeza de la administración rutinaria de la clase. Los profesores pueden organizar clases y administrar a los estudiantes fácilmente. Puede ser utilizado por profesores de K12, profesores de Educación Superior, formadores corporativos y más. La aplicación TeacherKit está disponible en iOS y Windows 8. El único producto que permite a los profesores, administradores, estudiantes y padres con un sistema completo de gestión de aulas de informes para la asistencia de los estudiantes, el comportamiento, las calificaciones y las actividades en el aula.</p>
+            
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-4">
+                        <h3>Sistema avanzado de informes</h3>
+                           <div class="feature-icon">
+                            <i class="material-icons">&#xE150;</i>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <h3>La mejor herramienta de gestión del aula que facilita las necesidades de los profesores</h3>
+                         <div class="feature-icon">
+                            <i class="material-icons">&#xE32C;</i>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <h3>Sistema muy flexible</h3>
+                       
+                        <div class="feature-icon">
+                            <i class="material-icons">&#xE89D;</i>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="feature-icon">
+                            <i class="material-icons">&#xE259;</i>
+                        </div>
+                        <h3>Sistema de clasificación personalizable</h3>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="feature-icon">
+                            <i class="material-icons">&#xE40A;</i>
+                        </div>
+                        <h3>Funciona sin conexión</h3>
+                    </div>
+                    <div class="ui-g-12 ui-md-4">
+                        <div class="feature-icon">
+                            <i class="material-icons">&#xE86C;</i>
+                        </div>
+                        <h3>Disponible en múltiples plataformas para Web, iOS y Android</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="promotion" class="clearfix">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-lg-8">
+                        <h1>TeacherKitSchools es la aplicación líder para mantenerte siempre informado con tus actualizaciones en el aula desde cualquier lugar y en cualquier momento</h1>
+                       
+                    </div>
+                    <div class="ui-g-12 ui-lg-4">
+                        <div class="card">
+                            <h3>Mantenga sus datos seguros</h3>
+                            <p>Puedes realizar copias de seguridad de tus datos e instalar estas copias de seguridad en cualquier momento con Dropbox.</p>
+                            <p>TeacherKitSchools realiza copias de seguridad automáticas en Dropbox para que puedas mantener tus datos seguros; puede restaurar la copia de seguridad en cualquier momento.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h3>Gestione a sus estudiantes</h3>
+                            <p>Añade alumnos desde tus contactos de iPhone, iPad y/o iPod touch.</p>
+                            <p>Agregue alumnos existentes en otras clases.</p>
+                            <p>Añadir alumnos de una foto.</p>                            
+                        </div>
+                        
+                        <div class="card">
+                            <h3>Gestione su clase</h3>
+                            <p>Agregue tantas clases como necesite.</p>
+                            <p>Duplica tus clases si es necesario.</p>
+                            <p>Personaliza clases con colores y código</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="pricing">
+                <h2>Sacar el máximo provecho de TeacherKitSchools</h2>
+                <p>Observamos una de las cosas más básicas que los padres necesitan saber todos los días: poder rastrear el progreso diario de sus hijos en la escuela. Algunos padres podrían necesitar comunicarse con los maestros de su hijo en la escuela y obtener comentarios sobre el comportamiento y las calificaciones de su hijo en el salón de clases. TeacherKitSchools trabaja en facilitar todas estas necesidades para los padres y solo toma unos momentos registrarse. ¿Por qué cambiar a un proceso basado en la tecnología: ¿no es eso solo agrega complejidad innecesaria? La respuesta a eso es doble. En primer lugar, un registro basado en la tecnología puede ser tan simple y rápido de usar como uno basado en papel. Y en segundo lugar, la tecnología puede abrir numerosas maneras de obtener los datos de su hijo que hacen que el seguimiento de su hijo sea mucho más fácil y significativo.</p>
+            
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-4 pricing-box pricing-basic">
+                        <div class="card">
+                            <div class="pricing-header">
+                                <span class="name">Precio básico</span>
+                                <span class="fee">$5</span>
+                                <span class="type">Mensual</span>
+                            </div>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><i class="material-icons"></i><span>Haga un seguimiento de la asistencia de su hijo a la clase.</span></li>
+                                    <li><i class="material-icons"></i><span>Haga un seguimiento del comportamiento de su hijo en la clase</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4 pricing-box pricing-standard">
+                        <div class="card">
+                            <div class="pricing-header">
+                                <span class="name">Precio estándar</span>
+                                <span class="fee">$25</span>
+                                <span class="type">Mensual</span>
+                            </div>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><i class="material-icons"></i><span>Haga un seguimiento de las actividades de su hijo.</span></li>
+                                    <li><i class="material-icons"></i><span>Manténgase en contacto con los maestros de su hijo.</span></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui-g-12 ui-md-4 pricing-box pricing-professional">
+                        <div class="card">
+                            <div class="pricing-header">
+                                <span class="name">Presio profesional</span>
+                                <span class="fee">$50</span>
+                                <span class="type">Mensual</span>
+                            </div>
+                            <div class="pricing-content">
+                                <ul>
+                                    <li><i class="material-icons"></i><span>Haga un seguimiento del libro de calificaciones de su hijo.</span></li>
+                                    <li><i class="material-icons"></i><span>Haga un seguimiento de los horarios de su hijo </span></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="video">
+               <div class="video-content">
+                   <h2>Múltiples idiomas. Múltiples plataformas</h2>
+                   <p>Es fácil de instalar y fácil de usar. TeacherKit Student es compatible con dispositivos iPad, iPhone, iPod touch y Android.</p>
+                   <div class="video-container">
+                       <iframe src="https://www.youtube.com/embed/B_lYGUtCd0g" frameborder="0" width="560" height="330"></iframe>
+                   </div>
+               </div>
+           </div>
+           
+           <div class="footer">
+               <div class="footer-content">
+                   <div class="ui-g">
+                        <div class="ui-g-12 ui-md-6">
+                            <p>Enlaces de acceso rápido</p>
+                        </div>
+                        <div class="ui-g-12 ui-md-6">
+                            <ul>
+                                <li><a href="#mobile">Política de privacidad</a></li>
+                                <li><a href="#pricing">Condiciones de los servicios</a></li>
+                                <li><a href="#video">Apoyo</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">Inicio</a></li>
+                                <li><a href="#introduction">Introducción</a></li>
+                                <li><a href="#features">Blog</a></li>
+                            </ul>
+                        </div>
+                    </div>
+               </div>
+           </div>
+        </div>
+        
+        <h:outputStylesheet name="css/animate.css" library="ultima-layout" />
+        <h:outputStylesheet name="css/ripple.css" library="ultima-layout" />
+        <h:outputStylesheet name="css/layout-grey.css" library="ultima-layout" />
+        <h:outputStylesheet name="grid.css" library="css" />
+        
+                <script type="text/javascript">
+        $(function() {
+            $('#menu-button').on('click', function(e) {
+                var menu = $('#menu');
+                if(menu.hasClass('lmenu-active')) {
+                    menu.addClass('fadeOutUp');
+                    
+                    setTimeout(function() {
+                        menu.removeClass('fadeOutUp fadeInDown lmenu-active');
+                    },500);
+                }
+                else {
+                    menu.addClass('lmenu-active fadeInDown');
+                }
+                e.preventDefault();
+            });
+        });
+        </script>
+        
+        
+    </h:body>
+
+</html>

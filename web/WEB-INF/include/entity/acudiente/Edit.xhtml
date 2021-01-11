@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="AcudienteEditDlg" widgetVar="AcudienteEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.EditAcudienteTitle}" closeOnEscape="true">
+
+            <h:form id="AcudienteEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{acudienteController.selected != null}">
+
+
+                        <h:outputLabel value="#{app.EditAcudienteLabel_idAcudiente}" for="idAcudiente" />
+                        <h:outputText id="idAcudiente" value="#{acudienteController.selected.idAcudiente}" />
+
+                        <p:outputLabel value="#{app.EditAcudienteLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{acudienteController.selected.nombres}" title="#{app.EditAcudienteTitle_nombres}" required="true" requiredMessage="#{app.EditAcudienteRequiredMessage_nombres}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{app.EditAcudienteLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{acudienteController.selected.apellidos}" title="#{app.EditAcudienteTitle_apellidos}" required="true" requiredMessage="#{app.EditAcudienteRequiredMessage_apellidos}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{app.EditAcudienteLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy HH:mm:ss" value="#{acudienteController.selected.fechaNacimiento}" title="#{app.EditAcudienteTitle_fechaNacimiento}" required="true" requiredMessage="#{app.EditAcudienteRequiredMessage_fechaNacimiento}" showOn="button"/>
+
+                        <p:outputLabel value="#{app.EditAcudienteLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{acudienteController.selected.telefono}" title="#{app.EditAcudienteTitle_telefono}" required="true" requiredMessage="#{app.EditAcudienteRequiredMessage_telefono}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{app.EditAcudienteLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{acudienteController.selected.direccion}" title="#{app.EditAcudienteTitle_direccion}" required="true" requiredMessage="#{app.EditAcudienteRequiredMessage_direccion}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{app.EditAcudienteLabel_documento}" for="documento" />
+                        <p:inputText id="documento" value="#{acudienteController.selected.documento}" title="#{app.EditAcudienteTitle_documento}" required="true" requiredMessage="#{app.EditAcudienteRequiredMessage_documento}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{app.EditAcudienteLabel_idTipoDocumento}" for="idTipoDocumento" />
+                        <p:selectOneMenu id="idTipoDocumento" value="#{acudienteController.selected.idTipoDocumento}" required="true" requiredMessage="#{app.EditAcudienteRequiredMessage_idTipoDocumento}" converter="tipoDocumentoConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoDocumentoController.items}"
+                                           var="idTipoDocumentoItem"
+                                           itemValue="#{idTipoDocumentoItem}"
+                                           itemLabel="#{idTipoDocumentoItem.nombre}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{acudienteController.save}" value="#{app.Save}" update="display,:AcudienteListForm:datalist,:AcudienteListForm:AcudienteDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AcudienteEditDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('AcudienteEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

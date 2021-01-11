@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioViewDlg" widgetVar="UsuarioViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.ViewUsuarioTitle}" closeOnEscape="true">
+
+            <h:form id="UsuarioViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
+
+                        <h:outputText value="#{app.ViewUsuarioLabel_idUsuario}"/>
+                        <h:outputText value="#{usuarioController.selected.idUsuario}" title="#{app.ViewUsuarioTitle_idUsuario}"/>
+
+                        <h:outputText value="#{app.ViewUsuarioLabel_nombreUsuario}"/>
+                        <h:outputText value="#{usuarioController.selected.nombreUsuario}" title="#{app.ViewUsuarioTitle_nombreUsuario}"/>
+
+                        <h:outputText value="#{app.ViewUsuarioLabel_clave}"/>
+                        <h:outputText value="#{usuarioController.selected.clave}" title="#{app.ViewUsuarioTitle_clave}"/>
+
+                        <h:outputText value="#{app.ViewUsuarioLabel_documento}"/>
+                        <h:outputText value="#{usuarioController.selected.documento}" title="#{app.ViewUsuarioTitle_documento}"/>
+
+                        <h:outputText value="#{app.ViewUsuarioLabel_idRol}"/>
+                        <h:outputText value="#{usuarioController.selected.idRol.nombre}"/>
+
+                        <h:outputText value="#{app.ViewUsuarioLabel_idTipoDocumento}"/>
+                        <h:outputText value="#{usuarioController.selected.idTipoDocumento.nombre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{app.Close}" onclick="PF('UsuarioViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="pfcrud.css"/>
+        <h:outputScript library="scripts" name="pfcrud.js"/>
+        <h:outputStylesheet name="css/layout-teal.css" library="ultima-layout" />
+
+        <h:outputScript library="ultima-layout" name="js/layout.js"/>
+        <h:outputScript library="ultima-layout" name="js/nanoscroller.js"/>
+        <h:outputScript library="ultima-layout" name="js/ripple.js"/>
+        <h:outputScript library="ultima-layout" name="js/swipe.js"/>
+    </h:head>
+
+    <h:body>
+
+        <p:growl id="growl" life="3000"/>
+
+        <div id="cabecera" align="center">
+            <table width="100%">
+                <tr>
+                    <td >
+
+                        <ui:insert name="cabecera" >    
+                                <ui:include src="/WEB-INF/include/header.xhtml"/>
+                        </ui:insert>    
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="ContenidoMaster">
+            <div id="divMenu" class="Menu">
+                <table  style="margin-top: -2px;width: 100%;">
+                    <tr>
+                        <td>
+
+                            <ui:insert name="divMenu" >                          
+                                <ui:include src="/WEB-INF/include/appmenu.xhtml"/>
+                            </ui:insert>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="Contenido">
+
+
+                <ui:insert name="body" >       
+
+                </ui:insert>
+
+            </div>
+
+
+        </div>
+
+
+    </h:body>
+
+</html>

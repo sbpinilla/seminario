@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProfesorViewDlg" widgetVar="ProfesorViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.ViewProfesorTitle}" closeOnEscape="true">
+
+            <h:form id="ProfesorViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{profesorController.selected != null}">
+
+                        <h:outputText value="#{app.ViewProfesorLabel_idProfesor}"/>
+                        <h:outputText value="#{profesorController.selected.idProfesor}" title="#{app.ViewProfesorTitle_idProfesor}"/>
+
+                        <h:outputText value="#{app.ViewProfesorLabel_nombres}"/>
+                        <h:outputText value="#{profesorController.selected.nombres}" title="#{app.ViewProfesorTitle_nombres}"/>
+
+                        <h:outputText value="#{app.ViewProfesorLabel_apellidos}"/>
+                        <h:outputText value="#{profesorController.selected.apellidos}" title="#{app.ViewProfesorTitle_apellidos}"/>
+
+                        <h:outputText value="#{app.ViewProfesorLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{profesorController.selected.fechaNacimiento}" title="#{app.ViewProfesorTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{app.ViewProfesorLabel_telefono}"/>
+                        <h:outputText value="#{profesorController.selected.telefono}" title="#{app.ViewProfesorTitle_telefono}"/>
+
+                        <h:outputText value="#{app.ViewProfesorLabel_direccion}"/>
+                        <h:outputText value="#{profesorController.selected.direccion}" title="#{app.ViewProfesorTitle_direccion}"/>
+
+                        <h:outputText value="#{app.ViewProfesorLabel_documento}"/>
+                        <h:outputText value="#{profesorController.selected.documento}" title="#{app.ViewProfesorTitle_documento}"/>
+
+                        <h:outputText value="#{app.ViewProfesorLabel_idTipoDocumento}"/>
+                        <h:outputText value="#{profesorController.selected.idTipoDocumento.idTipoDocumento}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{app.Close}" onclick="PF('ProfesorViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

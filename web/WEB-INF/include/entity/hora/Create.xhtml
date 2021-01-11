@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HoraCreateDlg" widgetVar="HoraCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{app.CreateHoraTitle}" closeOnEscape="true">
+
+            <h:form id="HoraCreateForm">
+
+                <h:panelGroup id="display" rendered="#{horaController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{app.CreateHoraLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{horaController.selected.nombre}" title="#{app.CreateHoraTitle_nombre}" required="true" requiredMessage="#{app.CreateHoraRequiredMessage_nombre}" size="100" maxlength="100"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{horaController.saveNew}" value="#{app.Save}" update="display,:HoraListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('HoraCreateDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('HoraCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="CursoMateriaProfesorListForm">
+
+        <p:panel header="#{app.ListCursoMateriaProfesorTitle}">
+            <p:contextMenu id="CursoMateriaProfesorDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{app.Create}" onclick="document.getElementById('CursoMateriaProfesorListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{app.View}" onclick="document.getElementById('CursoMateriaProfesorListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{app.Edit}" onclick="document.getElementById('CursoMateriaProfesorListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{app.Delete}" onclick="document.getElementById('CursoMateriaProfesorListForm:deleteButton').click();" icon="ui-icon-trash"/>
+            </p:contextMenu>
+            <p:dataTable id="datalist" paginatorPosition="bottom"
+                         value="#{cursoMateriaProfesorController.items}"
+                         lazy="false"
+                         rowKey="#{item.idCursoMateriaProfesor}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{cursoMateriaProfesorController.selected}"
+                         filteredValue="#{cursoMateriaProfesorController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{cursoMateriaProfesorController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idCursoMateriaProfesor}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:CursoMateriaProfesorDataTableContextMenu" listener="#{cursoMateriaProfesorController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:CursoMateriaProfesorDataTableContextMenu" listener="#{cursoMateriaProfesorController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{cursoMateriaProfesorController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('CursoMateriaProfesorListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.idCursoMateriaProfesor}" filterBy="#{item.idCursoMateriaProfesor}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListCursoMateriaProfesorTitle_idCursoMateriaProfesor}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idCursoMateriaProfesor}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idCurso.idCurso}" filterBy="#{item.idCurso.idCurso}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListCursoMateriaProfesorTitle_idCurso}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idCurso.nombre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idMateria.idMateria}" filterBy="#{item.idMateria.idMateria}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListCursoMateriaProfesorTitle_idMateria}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idMateria.nombre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idProfesor.idProfesor}" filterBy="#{item.idProfesor.idProfesor}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListCursoMateriaProfesorTitle_idProfesor}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idProfesor.nombres} #{item.idProfesor.apellidos}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{app.Create}" actionListener="#{cursoMateriaProfesorController.prepareCreate}" update=":CursoMateriaProfesorCreateForm" oncomplete="PF('CursoMateriaProfesorCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{app.View}" update=":CursoMateriaProfesorViewForm" oncomplete="PF('CursoMateriaProfesorViewDialog').show()" disabled="#{empty cursoMateriaProfesorController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{app.Edit}" update=":CursoMateriaProfesorEditForm" oncomplete="PF('CursoMateriaProfesorEditDialog').show()" disabled="#{empty cursoMateriaProfesorController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{app.Delete}" actionListener="#{cursoMateriaProfesorController.delete}" update=":growl,datalist" disabled="#{empty cursoMateriaProfesorController.selected}">
+                <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

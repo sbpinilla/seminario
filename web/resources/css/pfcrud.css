@@ -1,0 +1,122 @@
+.ui-widget {
+    font-size: 12px !important;
+}
+.ui-layout-north {
+    z-index:20 !important;
+    overflow:visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+    text-transform: uppercase;
+}
+.ui-datatable .ui-datatable-footer .footer-section {
+    text-align: left;
+}
+
+.column {
+    font-weight: bold;
+    background-color: menu;
+}
+
+.ui-dialog {
+    width: 80% !important;
+}
+
+
+
+.ui-layout-center {                    
+    overflow:hidden !important;
+}
+
+.ui-layout-center .ui-layout-unit-content {
+    overflow:hidden !important;
+} 
+
+body .ui-widget-content {
+    background-color: #ffffff;
+    font-size: 12px;
+    border: 1px solid #bdbdbd;
+}
+
+body .ui-button  {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#schedule{
+    width: 80%;
+    margin: 0 auto;
+        
+}
+
+ .styleClassNotice{
+	   background-color: green !important;
+	   border-color: green !important;
+	   color: white !important;
+	}
+
+
+/* MASTER*/
+
+
+/*Master Page*/
+
+#cabecera{
+    height: 180px;
+    width: 100%;
+    left: 0%;
+    position: absolute;
+    top: 0;
+    background-color: gray;
+    background-image: url('ultima-layout/images/landing/landing-header.png');
+    background-repeat: repeat-x;
+    border-bottom-style: solid;
+}
+
+.Menu{
+    height:50px;
+    top: 0px;
+    width: 100%;
+    left: 0px;
+    position: absolute;
+    z-index: 1000;
+    text-align: center;
+}
+
+#Contenido{
+    width: 100%;
+    left: 0%;
+    position: absolute;
+    top: 60PX;
+    bottom: 0px;
+}
+
+#ContenidoMaster{
+
+    width: 100%;
+    left: 0%;
+    position: absolute;
+    top: 170px;
+    bottom: 0px;
+    background-image: url(../img/fondo.jpg);
+    background-position: center; 
+}
+
+#ContenidoGeneral{
+    width: 100%;
+    left: 0%;
+    position: absolute;
+    top: 150px;
+    bottom: 0px;
+    background-image: url(../img/fondo.jpg);
+
+    background-position: center;   
+}
+
+
+
+
+/*Fin master page*/

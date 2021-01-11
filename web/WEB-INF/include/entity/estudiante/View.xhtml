@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstudianteViewDlg" widgetVar="EstudianteViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.ViewEstudianteTitle}" closeOnEscape="true">
+
+            <h:form id="EstudianteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{estudianteController.selected != null}">
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_idEstudiante}"/>
+                        <h:outputText value="#{estudianteController.selected.idEstudiante}" title="#{app.ViewEstudianteTitle_idEstudiante}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_nombres}"/>
+                        <h:outputText value="#{estudianteController.selected.nombres}" title="#{app.ViewEstudianteTitle_nombres}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_apellidos}"/>
+                        <h:outputText value="#{estudianteController.selected.apellidos}" title="#{app.ViewEstudianteTitle_apellidos}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{estudianteController.selected.fechaNacimiento}" title="#{app.ViewEstudianteTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_telefono}"/>
+                        <h:outputText value="#{estudianteController.selected.telefono}" title="#{app.ViewEstudianteTitle_telefono}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_direccion}"/>
+                        <h:outputText value="#{estudianteController.selected.direccion}" title="#{app.ViewEstudianteTitle_direccion}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_documento}"/>
+                        <h:outputText value="#{estudianteController.selected.documento}" title="#{app.ViewEstudianteTitle_documento}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_idCurso}"/>
+                        <h:outputText value="#{estudianteController.selected.idCurso.nombre}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteLabel_idTipoDocumento}"/>
+                        <h:outputText value="#{estudianteController.selected.idTipoDocumento.nombre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{app.Close}" onclick="PF('EstudianteViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DiaHoraCursoMateriaProfViewDlg" widgetVar="DiaHoraCursoMateriaProfViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.ViewDiaHoraCursoMateriaProfTitle}" closeOnEscape="true">
+
+            <h:form id="DiaHoraCursoMateriaProfViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{diaHoraCursoMateriaProfController.selected != null}">
+
+                        <h:outputText value="#{app.ViewDiaHoraCursoMateriaProfLabel_idDhCmp}"/>
+                        <h:outputText value="#{diaHoraCursoMateriaProfController.selected.idDhCmp}" title="#{app.ViewDiaHoraCursoMateriaProfTitle_idDhCmp}"/>
+
+                        <h:outputText value="#{app.ViewDiaHoraCursoMateriaProfLabel_idCursoMateriaProfesor}"/>
+                        <h:outputText value="#{diaHoraCursoMateriaProfController.selected.idCursoMateriaProfesor.idCurso.nombre} -
+                                           #{diaHoraCursoMateriaProfController.selected.idCursoMateriaProfesor.idMateria.nombre} - 
+                                           #{diaHoraCursoMateriaProfController.selected.idCursoMateriaProfesor.idProfesor.nombres} #{diaHoraCursoMateriaProfController.selected.idCursoMateriaProfesor.idProfesor.apellidos}"/>
+                        
+                        
+                        <h:outputText value="#{app.ViewDiaHoraCursoMateriaProfLabel_idDiaHora}"/>
+                        <h:outputText value="#{diaHoraCursoMateriaProfController.selected.idDiaHora.idDia.nombre} - #{diaHoraCursoMateriaProfController.selected.idDiaHora.idHora.nombre} "/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{app.Close}" onclick="PF('DiaHoraCursoMateriaProfViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

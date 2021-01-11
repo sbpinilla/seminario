@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProfesorCreateDlg" widgetVar="ProfesorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{app.CreateProfesorTitle}" closeOnEscape="true">
+
+            <h:form id="ProfesorCreateForm">
+
+                <h:panelGroup id="display" rendered="#{profesorController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{app.CreateProfesorLabel_nombres}" for="nombres" />
+                        <p:inputText id="nombres" value="#{profesorController.selected.nombres}" title="#{app.CreateProfesorTitle_nombres}" required="true" requiredMessage="#{app.CreateProfesorRequiredMessage_nombres}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{app.CreateProfesorLabel_apellidos}" for="apellidos" />
+                        <p:inputText id="apellidos" value="#{profesorController.selected.apellidos}" title="#{app.CreateProfesorTitle_apellidos}" required="true" requiredMessage="#{app.CreateProfesorRequiredMessage_apellidos}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{app.CreateProfesorLabel_fechaNacimiento}" for="fechaNacimiento" />
+                        <p:calendar id="fechaNacimiento" pattern="MM/dd/yyyy HH:mm:ss" value="#{profesorController.selected.fechaNacimiento}" title="#{app.CreateProfesorTitle_fechaNacimiento}" required="true" requiredMessage="#{app.CreateProfesorRequiredMessage_fechaNacimiento}" showOn="button"/>
+
+                        <p:outputLabel value="#{app.CreateProfesorLabel_telefono}" for="telefono" />
+                        <p:inputText id="telefono" value="#{profesorController.selected.telefono}" title="#{app.CreateProfesorTitle_telefono}" required="true" requiredMessage="#{app.CreateProfesorRequiredMessage_telefono}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{app.CreateProfesorLabel_direccion}" for="direccion" />
+                        <p:inputText id="direccion" value="#{profesorController.selected.direccion}" title="#{app.CreateProfesorTitle_direccion}" required="true" requiredMessage="#{app.CreateProfesorRequiredMessage_direccion}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{app.CreateProfesorLabel_documento}" for="documento" />
+                        <p:inputText id="documento" value="#{profesorController.selected.documento}" title="#{app.CreateProfesorTitle_documento}" required="true" requiredMessage="#{app.CreateProfesorRequiredMessage_documento}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{app.CreateProfesorLabel_idTipoDocumento}" for="idTipoDocumento" />
+                        <p:selectOneMenu id="idTipoDocumento" value="#{profesorController.selected.idTipoDocumento}" required="true" requiredMessage="#{app.CreateProfesorRequiredMessage_idTipoDocumento}" converter="tipoDocumentoConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{tipoDocumentoController.items}"
+                                           var="idTipoDocumentoItem"
+                                           itemValue="#{idTipoDocumentoItem}"
+                                           itemLabel="#{idTipoDocumentoItem.nombre}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{profesorController.saveNew}" value="#{app.Save}" update="display,:ProfesorListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ProfesorCreateDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('ProfesorCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

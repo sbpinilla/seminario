@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CursoMateriaProfesorCreateDlg" widgetVar="CursoMateriaProfesorCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{app.CreateCursoMateriaProfesorTitle}" closeOnEscape="true">
+
+            <h:form id="CursoMateriaProfesorCreateForm">
+
+                <h:panelGroup id="display" rendered="#{cursoMateriaProfesorController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{app.CreateCursoMateriaProfesorLabel_idCurso}" for="idCurso" />
+                        <p:selectOneMenu id="idCurso" value="#{cursoMateriaProfesorController.selected.idCurso}" required="true" requiredMessage="#{app.CreateCursoMateriaProfesorRequiredMessage_idCurso}" converter="cursoConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoController.items}"
+                                           var="idCursoItem"
+                                           itemValue="#{idCursoItem}"
+                                           itemLabel="#{idCursoItem.nombre}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{app.CreateCursoMateriaProfesorLabel_idMateria}" for="idMateria" />
+                        <p:selectOneMenu id="idMateria" value="#{cursoMateriaProfesorController.selected.idMateria}" required="true" requiredMessage="#{app.CreateCursoMateriaProfesorRequiredMessage_idMateria}" converter="materiaConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{materiaController.items}"
+                                           var="idMateriaItem"
+                                           itemValue="#{idMateriaItem}"
+                                           itemLabel="#{idMateriaItem.nombre}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{app.CreateCursoMateriaProfesorLabel_idProfesor}" for="idProfesor" />
+                        <p:selectOneMenu id="idProfesor" value="#{cursoMateriaProfesorController.selected.idProfesor}" required="true" requiredMessage="#{app.CreateCursoMateriaProfesorRequiredMessage_idProfesor}" converter="profesorConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{profesorController.items}"
+                                           var="idProfesorItem"
+                                           itemValue="#{idProfesorItem}"
+                                           itemLabel="#{idProfesorItem.nombres} #{idProfesorItem.apellidos}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cursoMateriaProfesorController.saveNew}" value="#{app.Save}" update="display,:CursoMateriaProfesorListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('CursoMateriaProfesorCreateDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('CursoMateriaProfesorCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

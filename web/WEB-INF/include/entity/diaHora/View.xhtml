@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DiaHoraViewDlg" widgetVar="DiaHoraViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.ViewDiaHoraTitle}" closeOnEscape="true">
+
+            <h:form id="DiaHoraViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{diaHoraController.selected != null}">
+
+                        <h:outputText value="#{app.ViewDiaHoraLabel_idDiaHora}"/>
+                        <h:outputText value="#{diaHoraController.selected.idDiaHora}" title="#{app.ViewDiaHoraTitle_idDiaHora}"/>
+
+                        <h:outputText value="#{app.ViewDiaHoraLabel_idDia}"/>
+                        <h:outputText value="#{diaHoraController.selected.idDia.nombre}"/>
+
+                        <h:outputText value="#{app.ViewDiaHoraLabel_idHora}"/>
+                        <h:outputText value="#{diaHoraController.selected.idHora.nombre}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{app.Close}" onclick="PF('DiaHoraViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

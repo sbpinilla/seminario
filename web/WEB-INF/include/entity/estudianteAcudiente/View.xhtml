@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EstudianteAcudienteViewDlg" widgetVar="EstudianteAcudienteViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.ViewEstudianteAcudienteTitle}" closeOnEscape="true">
+
+            <h:form id="EstudianteAcudienteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{estudianteAcudienteController.selected != null}">
+
+                        <h:outputText value="#{app.ViewEstudianteAcudienteLabel_idEstudianteAcudiente}"/>
+                        <h:outputText value="#{estudianteAcudienteController.selected.idEstudianteAcudiente}" title="#{app.ViewEstudianteAcudienteTitle_idEstudianteAcudiente}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteAcudienteLabel_parentesco}"/>
+                        <h:outputText value="#{estudianteAcudienteController.selected.parentesco}" title="#{app.ViewEstudianteAcudienteTitle_parentesco}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteAcudienteLabel_idAcudiente}"/>
+                        <h:outputText value="#{estudianteAcudienteController.selected.idAcudiente.nombres} #{estudianteAcudienteController.selected.idAcudiente.apellidos}"/>
+
+                        <h:outputText value="#{app.ViewEstudianteAcudienteLabel_idEstudiante}"/>
+                        <h:outputText value="#{estudianteAcudienteController.selected.idEstudiante.nombres} #{estudianteAcudienteController.selected.idEstudiante.apellidos}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{app.Close}" onclick="PF('EstudianteAcudienteViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

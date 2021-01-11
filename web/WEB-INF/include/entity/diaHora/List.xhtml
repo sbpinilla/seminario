@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="DiaHoraListForm">
+
+        <p:panel header="#{app.ListDiaHoraTitle}">
+            <p:contextMenu id="DiaHoraDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{app.Create}" onclick="document.getElementById('DiaHoraListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{app.View}" onclick="document.getElementById('DiaHoraListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{app.Edit}" onclick="document.getElementById('DiaHoraListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{app.Delete}" onclick="document.getElementById('DiaHoraListForm:deleteButton').click();" icon="ui-icon-trash"/>
+            </p:contextMenu>
+            <p:dataTable id="datalist" paginatorPosition="bottom"
+                         value="#{diaHoraController.items}"
+                         lazy="false"
+                         rowKey="#{item.idDiaHora}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{diaHoraController.selected}"
+                         filteredValue="#{diaHoraController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{diaHoraController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idDiaHora}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:DiaHoraDataTableContextMenu" listener="#{diaHoraController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:DiaHoraDataTableContextMenu" listener="#{diaHoraController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{diaHoraController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('DiaHoraListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.idDiaHora}" filterBy="#{item.idDiaHora}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListDiaHoraTitle_idDiaHora}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idDiaHora}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idDia.nombre}" filterBy="#{item.idDia.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListDiaHoraTitle_idDia}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idDia.nombre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idHora.nombre}" filterBy="#{item.idHora.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListDiaHoraTitle_idHora}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idHora.nombre}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{app.Create}" actionListener="#{diaHoraController.prepareCreate}" update=":DiaHoraCreateForm" oncomplete="PF('DiaHoraCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{app.View}" update=":DiaHoraViewForm" oncomplete="PF('DiaHoraViewDialog').show()" disabled="#{empty diaHoraController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{app.Edit}" update=":DiaHoraEditForm" oncomplete="PF('DiaHoraEditDialog').show()" disabled="#{empty diaHoraController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{app.Delete}" actionListener="#{diaHoraController.delete}" update=":growl,datalist" disabled="#{empty diaHoraController.selected}">
+                <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

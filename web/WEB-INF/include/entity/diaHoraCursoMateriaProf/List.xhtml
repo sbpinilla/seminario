@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="DiaHoraCursoMateriaProfListForm">
+
+        <p:panel header="#{app.ListDiaHoraCursoMateriaProfTitle}">
+            <p:contextMenu id="DiaHoraCursoMateriaProfDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{app.Create}" onclick="document.getElementById('DiaHoraCursoMateriaProfListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{app.View}" onclick="document.getElementById('DiaHoraCursoMateriaProfListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{app.Edit}" onclick="document.getElementById('DiaHoraCursoMateriaProfListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{app.Delete}" onclick="document.getElementById('DiaHoraCursoMateriaProfListForm:deleteButton').click();" icon="ui-icon-trash"/>
+            </p:contextMenu>
+            <p:dataTable id="datalist" paginatorPosition="bottom"
+                         value="#{diaHoraCursoMateriaProfController.items}"
+                         lazy="false"
+                         rowKey="#{item.idDhCmp}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{diaHoraCursoMateriaProfController.selected}"
+                         filteredValue="#{diaHoraCursoMateriaProfController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{diaHoraCursoMateriaProfController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idDhCmp}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:DiaHoraCursoMateriaProfDataTableContextMenu" listener="#{diaHoraCursoMateriaProfController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:DiaHoraCursoMateriaProfDataTableContextMenu" listener="#{diaHoraCursoMateriaProfController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{diaHoraCursoMateriaProfController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('DiaHoraCursoMateriaProfListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.idDhCmp}" filterBy="#{item.idDhCmp}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListDiaHoraCursoMateriaProfTitle_idDhCmp}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idDhCmp}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idCursoMateriaProfesor.idCursoMateriaProfesor}" filterBy="#{item.idCursoMateriaProfesor.idCursoMateriaProfesor}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListDiaHoraCursoMateriaProfTitle_idCursoMateriaProfesor}"/>
+                    </f:facet>
+                    <h:outputText value=" #{item.idCursoMateriaProfesor.idCurso.nombre} -
+                                           #{item.idCursoMateriaProfesor.idMateria.nombre} - 
+                                           #{item.idCursoMateriaProfesor.idProfesor.nombres} #{item.idCursoMateriaProfesor.idProfesor.apellidos}"/>
+                    
+                   
+                </p:column>
+
+
+                <p:column sortBy="#{item.idDiaHora.idDiaHora}" filterBy="#{item.idDiaHora.idDiaHora}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListDiaHoraCursoMateriaProfTitle_idDiaHora}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idDiaHora.idDia.nombre} - #{item.idDiaHora.idHora.nombre}"/>
+                   
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{app.Create}" actionListener="#{diaHoraCursoMateriaProfController.prepareCreate}" update=":DiaHoraCursoMateriaProfCreateForm" oncomplete="PF('DiaHoraCursoMateriaProfCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{app.View}" update=":DiaHoraCursoMateriaProfViewForm" oncomplete="PF('DiaHoraCursoMateriaProfViewDialog').show()" disabled="#{empty diaHoraCursoMateriaProfController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{app.Edit}" update=":DiaHoraCursoMateriaProfEditForm" oncomplete="PF('DiaHoraCursoMateriaProfEditDialog').show()" disabled="#{empty diaHoraCursoMateriaProfController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{app.Delete}" actionListener="#{diaHoraCursoMateriaProfController.delete}" update=":growl,datalist" disabled="#{empty diaHoraCursoMateriaProfController.selected}">
+                <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AcudienteViewDlg" widgetVar="AcudienteViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.ViewAcudienteTitle}" closeOnEscape="true">
+
+            <h:form id="AcudienteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{acudienteController.selected != null}">
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_idAcudiente}"/>
+                        <h:outputText value="#{acudienteController.selected.idAcudiente}" title="#{app.ViewAcudienteTitle_idAcudiente}"/>
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_nombres}"/>
+                        <h:outputText value="#{acudienteController.selected.nombres}" title="#{app.ViewAcudienteTitle_nombres}"/>
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_apellidos}"/>
+                        <h:outputText value="#{acudienteController.selected.apellidos}" title="#{app.ViewAcudienteTitle_apellidos}"/>
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_fechaNacimiento}"/>
+                        <h:outputText value="#{acudienteController.selected.fechaNacimiento}" title="#{app.ViewAcudienteTitle_fechaNacimiento}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_telefono}"/>
+                        <h:outputText value="#{acudienteController.selected.telefono}" title="#{app.ViewAcudienteTitle_telefono}"/>
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_direccion}"/>
+                        <h:outputText value="#{acudienteController.selected.direccion}" title="#{app.ViewAcudienteTitle_direccion}"/>
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_documento}"/>
+                        <h:outputText value="#{acudienteController.selected.documento}" title="#{app.ViewAcudienteTitle_documento}"/>
+
+                        <h:outputText value="#{app.ViewAcudienteLabel_idTipoDocumento}"/>
+                        <h:outputText value="#{acudienteController.selected.idTipoDocumento.idTipoDocumento}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{app.Close}" onclick="PF('AcudienteViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

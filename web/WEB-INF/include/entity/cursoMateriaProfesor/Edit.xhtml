@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="CursoMateriaProfesorEditDlg" widgetVar="CursoMateriaProfesorEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.EditCursoMateriaProfesorTitle}" closeOnEscape="true">
+
+            <h:form id="CursoMateriaProfesorEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{cursoMateriaProfesorController.selected != null}">
+
+
+                        <h:outputLabel value="#{app.EditCursoMateriaProfesorLabel_idCursoMateriaProfesor}" for="idCursoMateriaProfesor" />
+                        <h:outputText id="idCursoMateriaProfesor" value="#{cursoMateriaProfesorController.selected.idCursoMateriaProfesor}" />
+
+                        <p:outputLabel value="#{app.EditCursoMateriaProfesorLabel_idCurso}" for="idCurso" />
+                        <p:selectOneMenu id="idCurso" value="#{cursoMateriaProfesorController.selected.idCurso}" required="true" requiredMessage="#{app.EditCursoMateriaProfesorRequiredMessage_idCurso}" converter="cursoConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoController.items}"
+                                           var="idCursoItem"
+                                           itemValue="#{idCursoItem}"
+                                           itemLabel="#{idCursoItem.idCurso.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{app.EditCursoMateriaProfesorLabel_idMateria}" for="idMateria" />
+                        <p:selectOneMenu id="idMateria" value="#{cursoMateriaProfesorController.selected.idMateria}" required="true" requiredMessage="#{app.EditCursoMateriaProfesorRequiredMessage_idMateria}" converter="materiaConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{materiaController.items}"
+                                           var="idMateriaItem"
+                                           itemValue="#{idMateriaItem}"
+                                           itemLabel="#{idMateriaItem.idMateria.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{app.EditCursoMateriaProfesorLabel_idProfesor}" for="idProfesor" />
+                        <p:selectOneMenu id="idProfesor" value="#{cursoMateriaProfesorController.selected.idProfesor}" required="true" requiredMessage="#{app.EditCursoMateriaProfesorRequiredMessage_idProfesor}" converter="profesorConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{profesorController.items}"
+                                           var="idProfesorItem"
+                                           itemValue="#{idProfesorItem}"
+                                           itemLabel="#{idProfesorItem.idProfesor.toString()}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{cursoMateriaProfesorController.save}" value="#{app.Save}" update="display,:CursoMateriaProfesorListForm:datalist,:CursoMateriaProfesorListForm:CursoMateriaProfesorDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('CursoMateriaProfesorEditDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('CursoMateriaProfesorEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

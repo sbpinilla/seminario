@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <h:form id="menuForm">
+            <p:menubar>
+                <p:menuitem value="#{app.Home}" outcome="/app" icon="ui-icon-home"/>
+                
+                <p:submenu label="Seguridad" icon="ui-icon-note" rendered="#{menuManagedBean.verMenu('seguridad')}">
+                    <p:menuitem value="#{app.RolHeading}..." outcome="/app/rol/index"  />
+                    <p:menuitem value="#{app.ModuloHeading}..." outcome="/app/modulo/index" />
+                    <p:menuitem value="#{app.ModuloRolHeading}..." outcome="/app/moduloRol/index" />
+                    <p:menuitem value="#{app.UsuarioHeading}..." outcome="/app/usuario/index" />
+                </p:submenu>
+
+                <p:submenu label="Registro" icon="ui-icon-person" rendered="#{menuManagedBean.verMenu('registro')}">
+                    <p:menuitem value="#{app.AcudienteHeading}..." outcome="/app/acudiente/index" />
+                    <p:menuitem value="#{app.EstudianteHeading}..." outcome="/app/estudiante/index" />
+                    <p:menuitem value="#{app.EstudianteAcudienteHeading}..." outcome="/app/estudianteAcudiente/index" />
+                    <p:menuitem value="#{app.ProfesorHeading}..." outcome="/app/profesor/index" />
+                </p:submenu>
+
+                <p:submenu label="Configurar horario" icon="ui-icon-calendar" rendered="#{menuManagedBean.verMenu('configuración')}">
+                    <p:menuitem value="#{app.GradoHeading}..." outcome="/app/grado/index" />
+                    <p:menuitem value="#{app.MateriaHeading}..." outcome="/app/materia/index" />
+                    <p:separator/>
+                    <p:menuitem value="#{app.CursoHeading}..." outcome="/app/curso/index" />
+                    <p:menuitem value="#{app.CursoMateriaProfesorHeading}..." outcome="/app/cursoMateriaProfesor/index" />
+                    <p:separator/>
+                    <p:menuitem value="#{app.HoraHeading}..." outcome="/app/hora/index" />
+                    <p:menuitem value="#{app.DiaHeading}..." outcome="/app/dia/index" />
+                    <p:menuitem value="#{app.DiaHoraHeading}..." outcome="/app/diaHora/index" />
+                    <p:menuitem value="#{app.DiaHoraCursoMateriaProfHeading}..." outcome="/app/diaHoraCursoMateriaProf/index" />
+
+                   
+                    
+                    
+                </p:submenu>
+
+                <p:submenu label="Mantenimiento" icon="ui-icon-gear" rendered="#{menuManagedBean.verMenu('mantenimiento')}"> 
+
+                    <p:menuitem value="#{app.TipoDocumentoHeading}..." outcome="/app/tipoDocumento/index" />
+
+                </p:submenu>
+            </p:menubar>
+        </h:form>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="DiaEditDlg" widgetVar="DiaEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.EditDiaTitle}" closeOnEscape="true">
+
+            <h:form id="DiaEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{diaController.selected != null}">
+
+
+                        <h:outputLabel value="#{app.EditDiaLabel_idDia}" for="idDia" />
+                        <h:outputText id="idDia" value="#{diaController.selected.idDia}" />
+
+                        <p:outputLabel value="#{app.EditDiaLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{diaController.selected.nombre}" title="#{app.EditDiaTitle_nombre}" required="true" requiredMessage="#{app.EditDiaRequiredMessage_nombre}" size="100" maxlength="100"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{diaController.save}" value="#{app.Save}" update="display,:DiaListForm:datalist,:DiaListForm:DiaDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('DiaEditDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('DiaEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

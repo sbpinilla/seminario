@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="MateriaListForm">
+
+        <p:panel header="#{app.ListMateriaTitle}">
+            <p:contextMenu id="MateriaDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{app.Create}" onclick="document.getElementById('MateriaListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{app.View}" onclick="document.getElementById('MateriaListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{app.Edit}" onclick="document.getElementById('MateriaListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{app.Delete}" onclick="document.getElementById('MateriaListForm:deleteButton').click();" icon="ui-icon-trash"/>
+            </p:contextMenu>
+            <p:dataTable id="datalist" paginatorPosition="bottom"
+                         value="#{materiaController.items}"
+                         lazy="false"
+                         rowKey="#{item.idMateria}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{materiaController.selected}"
+                         filteredValue="#{materiaController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{materiaController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idMateria}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:MateriaDataTableContextMenu"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:MateriaDataTableContextMenu"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('MateriaListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.idMateria}" filterBy="#{item.idMateria}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListMateriaTitle_idMateria}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idMateria}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nombre}" filterBy="#{item.nombre}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListMateriaTitle_nombre}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nombre}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{app.Create}" actionListener="#{materiaController.prepareCreate}" update=":MateriaCreateForm" oncomplete="PF('MateriaCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{app.View}" update=":MateriaViewForm" oncomplete="PF('MateriaViewDialog').show()" disabled="#{empty materiaController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{app.Edit}" update=":MateriaEditForm" oncomplete="PF('MateriaEditDialog').show()" disabled="#{empty materiaController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{app.Delete}" actionListener="#{materiaController.delete}" update=":growl,datalist" disabled="#{empty materiaController.selected}">
+                <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

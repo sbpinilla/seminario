@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ModuloEditDlg" widgetVar="ModuloEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.EditModuloTitle}" closeOnEscape="true">
+
+            <h:form id="ModuloEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{moduloController.selected != null}">
+
+
+                        <h:outputLabel value="#{app.EditModuloLabel_idModulo}" for="idModulo" />
+                        <h:outputText id="idModulo" value="#{moduloController.selected.idModulo}" />
+
+                        <p:outputLabel value="#{app.EditModuloLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{moduloController.selected.nombre}" title="#{app.EditModuloTitle_nombre}" required="true" requiredMessage="#{app.EditModuloRequiredMessage_nombre}" size="100" maxlength="100"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{moduloController.save}" value="#{app.Save}" update="display,:ModuloListForm:datalist,:ModuloListForm:ModuloDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ModuloEditDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('ModuloEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

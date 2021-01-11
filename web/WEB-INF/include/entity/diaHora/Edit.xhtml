@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="DiaHoraEditDlg" widgetVar="DiaHoraEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.EditDiaHoraTitle}" closeOnEscape="true">
+
+            <h:form id="DiaHoraEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{diaHoraController.selected != null}">
+
+
+                        <h:outputLabel value="#{app.EditDiaHoraLabel_idDiaHora}" for="idDiaHora" />
+                        <h:outputText id="idDiaHora" value="#{diaHoraController.selected.idDiaHora}" />
+
+                        <p:outputLabel value="#{app.EditDiaHoraLabel_idDia}" for="idDia" />
+                        <p:selectOneMenu id="idDia" value="#{diaHoraController.selected.idDia}" required="true" requiredMessage="#{app.EditDiaHoraRequiredMessage_idDia}" converter="diaConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{diaController.items}"
+                                           var="idDiaItem"
+                                           itemValue="#{idDiaItem}"
+                                           itemLabel="#{idDiaItem.nombre}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{app.EditDiaHoraLabel_idHora}" for="idHora" />
+                        <p:selectOneMenu id="idHora" value="#{diaHoraController.selected.idHora}" required="true" requiredMessage="#{app.EditDiaHoraRequiredMessage_idHora}" converter="horaConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{horaController.items}"
+                                           var="idHoraItem"
+                                           itemValue="#{idHoraItem}"
+                                           itemLabel="#{idHoraItem.nombre}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{diaHoraController.save}" value="#{app.Save}" update="display,:DiaHoraListForm:datalist,:DiaHoraListForm:DiaHoraDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('DiaHoraEditDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('DiaHoraEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

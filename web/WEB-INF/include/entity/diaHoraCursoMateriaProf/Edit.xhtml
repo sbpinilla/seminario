@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="DiaHoraCursoMateriaProfEditDlg" widgetVar="DiaHoraCursoMateriaProfEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{app.EditDiaHoraCursoMateriaProfTitle}" closeOnEscape="true">
+
+            <h:form id="DiaHoraCursoMateriaProfEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{diaHoraCursoMateriaProfController.selected != null}">
+
+
+                        <h:outputLabel value="#{app.EditDiaHoraCursoMateriaProfLabel_idDhCmp}" for="idDhCmp" />
+                        <h:outputText id="idDhCmp" value="#{diaHoraCursoMateriaProfController.selected.idDhCmp}" />
+
+                        <p:outputLabel value="#{app.EditDiaHoraCursoMateriaProfLabel_idCursoMateriaProfesor}" for="idCursoMateriaProfesor" />
+                        <p:selectOneMenu id="idCursoMateriaProfesor" value="#{diaHoraCursoMateriaProfController.selected.idCursoMateriaProfesor}" required="true" requiredMessage="#{app.EditDiaHoraCursoMateriaProfRequiredMessage_idCursoMateriaProfesor}" converter="cursoMateriaProfesorConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{cursoMateriaProfesorController.items}"
+                                           var="idCursoMateriaProfesorItem"
+                                           itemValue="#{idCursoMateriaProfesorItem}"
+                                           itemLabel="#{idCursoMateriaProfesorItem.idCurso.nombre} -
+                                           #{idCursoMateriaProfesorItem.idMateria.nombre} - 
+                                           #{idCursoMateriaProfesorItem.idProfesor.nombres} #{idCursoMateriaProfesorItem.idProfesor.apellidos}"
+                                           />
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{app.EditDiaHoraCursoMateriaProfLabel_idDiaHora}" for="idDiaHora" />
+                        <p:selectOneMenu id="idDiaHora" value="#{diaHoraCursoMateriaProfController.selected.idDiaHora}" required="true" requiredMessage="#{app.EditDiaHoraCursoMateriaProfRequiredMessage_idDiaHora}" converter="diaHoraConverter">
+                            <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
+                            <f:selectItems value="#{diaHoraController.items}"
+                                           var="idDiaHoraItem"
+                                           itemValue="#{idDiaHoraItem}"
+                                           itemLabel="#{idDiaHoraItem.idDia.nombre} - #{idDiaHoraItem.idHora.nombre}"
+                                           />
+
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{diaHoraCursoMateriaProfController.save}" value="#{app.Save}" update="display,:DiaHoraCursoMateriaProfListForm:datalist,:DiaHoraCursoMateriaProfListForm:DiaHoraCursoMateriaProfDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('DiaHoraCursoMateriaProfEditDialog'));">
+                        <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{app.Cancel}" oncomplete="PF('DiaHoraCursoMateriaProfEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

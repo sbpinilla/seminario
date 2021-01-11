@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ModuloRolListForm">
+
+        <p:panel header="#{app.ListModuloRolTitle}">
+            <p:contextMenu id="ModuloRolDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{app.Create}" onclick="document.getElementById('ModuloRolListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{app.View}" onclick="document.getElementById('ModuloRolListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{app.Edit}" onclick="document.getElementById('ModuloRolListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{app.Delete}" onclick="document.getElementById('ModuloRolListForm:deleteButton').click();" icon="ui-icon-trash"/>
+            </p:contextMenu>
+            <p:dataTable id="datalist" paginatorPosition="bottom"
+                         value="#{moduloRolController.items}"
+                         lazy="false"
+                         rowKey="#{item.idModuloRol}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{moduloRolController.selected}"
+                         filteredValue="#{moduloRolController.filteredItems}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{moduloRolController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idModuloRol}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ModuloRolDataTableContextMenu" listener="#{moduloRolController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ModuloRolDataTableContextMenu" listener="#{moduloRolController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{moduloRolController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('ModuloRolListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.idModuloRol}" filterBy="#{item.idModuloRol}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListModuloRolTitle_idModuloRol}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idModuloRol}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idModulo.idModulo}" filterBy="#{item.idModulo.idModulo}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListModuloRolTitle_idModulo}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idModulo.nombre}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idRol.idRol}" filterBy="#{item.idRol.idRol}">
+                    <f:facet name="header">
+                        <h:outputText value="#{app.ListModuloRolTitle_idRol}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idRol.nombre}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{app.Create}" actionListener="#{moduloRolController.prepareCreate}" update=":ModuloRolCreateForm" oncomplete="PF('ModuloRolCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{app.View}" update=":ModuloRolViewForm" oncomplete="PF('ModuloRolViewDialog').show()" disabled="#{empty moduloRolController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{app.Edit}" update=":ModuloRolEditForm" oncomplete="PF('ModuloRolEditDialog').show()" disabled="#{empty moduloRolController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{app.Delete}" actionListener="#{moduloRolController.delete}" update=":growl,datalist" disabled="#{empty moduloRolController.selected}">
+                <p:confirm header="#{app.ConfirmationHeader}" message="#{app.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/WEB-INF/include/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>
