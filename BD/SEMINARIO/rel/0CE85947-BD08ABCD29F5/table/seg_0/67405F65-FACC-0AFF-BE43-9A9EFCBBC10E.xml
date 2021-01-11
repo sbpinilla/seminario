@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="67405F65-FACC-0AFF-BE43-9A9EFCBBC10E" name="ESTUDIANTE_ACUDIENTE">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>727FBC1E-33CF-6F75-9999-6BB885BE0C53</importedID>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_ESTUDIANTE_ACUDIENTE" id="2D369CD7-F000-F606-F4CB-C281D4FD1308">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>E6398E0E-1188-C831-239A-E2D16F023886</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_ESTUDIANTE" id="730EC792-2B33-3D21-297C-03090F99026F">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>E5A55ABA-CD7B-A577-A2BD-D9A217987AED</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1FFF8DB5-30D8-609E-83C5-92FF5857A520" referredColumn="F2E23FDC-DAE7-A6F6-A862-EFA8F526646D"/>
+</associations>
+</Column>
+<Column name="ID_ACUDIENTE" id="D43BC4F2-3428-63D9-33D9-7D0FE41C448C">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>E1CECD48-A8A3-794F-9E37-A683A7BF2928</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F797E2B2-CC29-7139-4E00-1ED19ACF2C1E" referredColumn="85161BB0-4446-CDE5-A71C-265385645E1D"/>
+</associations>
+</Column>
+<Column name="PARENTESCO" id="6006640B-BF15-5C3C-9874-B818459C8FBF">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>B7EA9D0C-E99A-8285-876E-B32B3F5ED92B</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A7D514DB-B442-78D8-6FB0-BDBAB0ADB360" name="ESTUDIANTE_ACUDIENTE_PK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>6258EADB-37DA-0A5A-D7DA-1D87CE295637</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2D369CD7-F000-F606-F4CB-C281D4FD1308"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1F96A50F-F464-EB7A-1533-DAA4F43B882A" name="EA_ESTUDIANTE_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<generatorID>BFAE40BD-CE8E-AC81-293E-65F35F4D2250</generatorID>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="730EC792-2B33-3D21-297C-03090F99026F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E54C50DA-59EC-BBCF-2CDE-ADCD9A5F5A3A" name="EA_ACUDIENTE_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<generatorID>753D3215-E238-6629-6D45-290CD7074B8D</generatorID>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D43BC4F2-3428-63D9-33D9-7D0FE41C448C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -114,7 +114,7 @@ _book
 *.class
 
 # Package Files #
-*.jar
+
 *.war
 
 # gwt caches and compiled units #

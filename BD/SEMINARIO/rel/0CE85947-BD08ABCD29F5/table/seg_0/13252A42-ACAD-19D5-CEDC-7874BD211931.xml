@@ -1,0 +1,134 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="13252A42-ACAD-19D5-CEDC-7874BD211931" name="PROFESOR">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>8DDDC9C4-0660-AF8C-4546-EBB21769E70F</importedID>
+<ordsAlias>estudiantev1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_PROFESOR" id="EF7C2869-D470-DDFF-EEF1-4008652A0A5C">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>EEFB9F15-6559-11FB-C687-3672A1EFD6DD</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRES" id="9A480692-8344-1275-895C-410E56B37B86">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>784441B9-5331-1C2C-1C98-9BC5CE423849</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="APELLIDOS" id="649816F3-BB07-9180-3653-3B5990FC3976">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>695E4A03-B1A7-D85D-B086-2032580D01D4</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FECHA_NACIMIENTO" id="16A858B7-0275-5753-6338-EE8477827F65">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>71A64C49-1562-418B-3BF8-49752EEEB5E8</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TELEFONO" id="B444EAD7-568C-B600-70BA-361505C382A1">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>A340F88B-F54F-199E-B3D8-A005C4D88365</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DIRECCION" id="E92A2504-B364-FEBD-199B-5E4A5EEC84E6">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>34EFEB6E-7E8A-C15F-919C-A6775F794171</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_TIPO_DOCUMENTO" id="1A7CAFFD-A7AE-8FF9-5375-2F63C8431C0A">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>537C30BE-30FE-EBDD-3778-7B5C6DCA1B58</importedID>
+<constraintName>CK_ESTUDIANTEv1_TIPO_DOCUMENTO</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B76EC9BE-5BB2-0491-5526-28CF0FD005DA" referredColumn="83452A27-A354-4AAC-CB72-80B0AE2BABFA"/>
+</associations>
+</Column>
+<Column name="DOCUMENTO" id="0B2A0BE6-1BA4-34A2-9337-39932A0CF1EF">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>06FEE949-4E58-E7E7-DFD8-3A854F04BC4B</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="44F9B237-8C75-D98A-654B-DB2101116A4A" name="PROFESOR_PK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>22D38B31-6303-BF4E-7473-58B5E3A4D312</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EF7C2869-D470-DDFF-EEF1-4008652A0A5C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E1A03A0B-3B51-F873-7E59-EA228110416B" name="PROFESOR_TIPO_DOCUMENTO_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 19:55:25 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1A7CAFFD-A7AE-8FF9-5375-2F63C8431C0A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9F673B32-F368-5B1D-6680-853749124824" name="MODULO_ROL">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>00CB9479-F465-C04B-E0BA-B94DC67BFDF9</importedID>
+<ordsAlias>table_25</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_MODULO_ROL" id="D0228ABC-D430-4A2A-0410-03E36F8D91B5">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>30BA8EF0-79B8-EEF3-47B1-0009CCE958B6</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_MODULO" id="D3175B48-9E3D-B7B3-C21C-982C1EB5CE96">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>659A0294-8CF2-CFE3-8596-24404CE61878</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="44B8A8F3-D5E5-57EE-8E80-51680AD9C297" referredColumn="BBDEA7F1-9592-4F32-B2D4-69D797C41689"/>
+</associations>
+</Column>
+<Column name="ID_ROL" id="4AB52749-93A8-A0CA-B956-BC6A1C5FF1FE">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>E55B8FD5-CC6E-2E84-1C4A-68E8B25B6237</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7AAD899C-658C-7575-3CEF-AA9FB7D059B1" referredColumn="29D381FA-25A8-2D8E-79F9-1DB84D122FE0"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C3FD71A6-4809-B80C-1F8C-89E43E4F7DFD" name="MODULO_ROL_PK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>AC352B63-B3E7-46BB-6419-57A088861A47</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D0228ABC-D430-4A2A-0410-03E36F8D91B5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1720BB0F-2C34-2744-474E-8EDB931C3570" name="MODULO_ROL_ROL_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4AB52749-93A8-A0CA-B956-BC6A1C5FF1FE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7CC44E0C-25B1-168A-B34E-412587A0F017" name="MODULO_ROL_MODULO_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D3175B48-9E3D-B7B3-C21C-982C1EB5CE96"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

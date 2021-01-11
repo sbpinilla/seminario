@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="SEMINARIO" id="52555313-5BEF-84AC-060D-7006F7DE6992" version="3.5">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:02 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>52555313-5BEF-84AC-060D-7006F7DE6992</designId>
+<usedDesignStorageDescriptors>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="BB55DC1A-70B5-C617-2489-D0664283E194">
+<designStoragePath>C:\Users\sergio\Desktop\SEMINARIO\SEMINARIO</designStoragePath>
+</designDescr>
+<designDescr class="oracle.dbtools.crest.model.design.Design$DesignStorageDesc" id="0A2A25AB-C558-D0A5-26C3-D35E18C446F6">
+<designStoragePath>C:\Users\sergio\Desktop\SEMINARIO\SEMINARIO</designStoragePath>
+</designDescr>
+</usedDesignStorageDescriptors>
+</OSDM_Design>

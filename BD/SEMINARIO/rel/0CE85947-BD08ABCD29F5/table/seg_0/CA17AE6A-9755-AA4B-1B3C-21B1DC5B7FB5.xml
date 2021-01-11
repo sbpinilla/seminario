@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CA17AE6A-9755-AA4B-1B3C-21B1DC5B7FB5" name="DIA_HORA_CURSO_MATERIA_PROF">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>0C3C91C6-821B-63C2-63A9-16CEC38543FD</importedID>
+<ordsAlias>table_18</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_DH_CMP" id="2E1E22BE-8B2E-604D-FFDA-33DBF52DBE55">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>BEB0E732-3DFC-4EFA-A053-FED554F69845</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_DIA_HORA" id="49AFAAF0-D590-4A34-DEAB-E7D34F9CA062">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>F240B655-E986-1C7E-670E-ACA2CF118020</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="86DAB55B-9B4E-A0E7-B905-B725C5E3D558" referredColumn="A40DA349-7B9F-DC21-43CD-005AF5A84FA4"/>
+</associations>
+</Column>
+<Column name="ID_CURSO_MATERIA_PROFESOR" id="8EE61C3F-81C8-1016-BCE9-7B2177472024">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>E8ADA63F-4DDD-757B-D0D1-2645B6771C62</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C384B1FD-B9BF-1781-1331-562300C4CF0A" referredColumn="7CBA1B0C-C053-36DD-EAC3-D3AE9DCE2802"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="92AF666F-9FD2-AF5B-93C9-656F68CAF70F" name="DIA_HORA_CURSO_MATERIA_PROF_PK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>32770AA5-9791-C20C-9194-288DE3E33D52</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2E1E22BE-8B2E-604D-FFDA-33DBF52DBE55"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9F45E5D8-88D5-1B82-981D-B351491D733B" name="DHCMP_CMP_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8EE61C3F-81C8-1016-BCE9-7B2177472024"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9076459E-8DCC-FA20-5BBC-1C0B77E97A52" name="DHCMP_DIA_HORA_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49AFAAF0-D590-4A34-DEAB-E7D34F9CA062"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

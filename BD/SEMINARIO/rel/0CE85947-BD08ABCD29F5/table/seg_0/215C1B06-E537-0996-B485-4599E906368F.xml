@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="215C1B06-E537-0996-B485-4599E906368F" name="CURSO_MATERIA_PROFESOR">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>6C0C9BD3-CA95-419E-C729-6EA290F168F9</importedID>
+<ordsAlias>table_13</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_CURSO_MATERIA_PROFESOR" id="7CBA1B0C-C053-36DD-EAC3-D3AE9DCE2802">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>8D8E4AAF-37A6-2CED-3EC5-0E2A84EA9458</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_CURSO" id="51FD65D7-D7B6-94E4-0A68-2F622E29FA3F">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>1BF04AEF-4513-3074-D7BC-991745BE6621</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FB28E5D1-B8FA-F702-965D-7DD671B304C3" referredColumn="0547DFF3-0EEA-E790-7240-17B9A90EBD8B"/>
+</associations>
+</Column>
+<Column name="ID_MATERIA" id="BE01A517-4433-05E6-CE4E-167AFE8B9790">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>3CD478FA-0C24-9D7E-591C-078272CFEA0E</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="976361D6-D78D-1B25-A47B-F4133F8F7997" referredColumn="ACAF83D2-621E-C224-0D9E-FF60198B418A"/>
+</associations>
+</Column>
+<Column name="ID_PROFESOR" id="4467932E-FF8D-C9DD-4910-E9B16DAA6527">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>38154498-E6F6-FA80-96CC-56981973DECF</importedID>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FAA33131-BDE8-3518-C885-95493A2EF820" referredColumn="EF7C2869-D470-DDFF-EEF1-4008652A0A5C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C6EB5A16-E1A1-F4ED-24D5-AC09206B377B" name="CURSO_MATERIA_PROFESOR_PK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>A7D5EC89-C95E-DC39-B173-04B7853F1E0A</importedID>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7CBA1B0C-C053-36DD-EAC3-D3AE9DCE2802"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FF41C982-0F9E-0949-A57C-930B17E57AA8" name="CMP_PROFESOR_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<generatorID>BFAE40BD-CE8E-AC81-293E-65F35F4D2250</generatorID>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4467932E-FF8D-C9DD-4910-E9B16DAA6527"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B293370A-E08B-2ABB-97AA-108C2C00DF0D" name="CMP_CURSO_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="51FD65D7-D7B6-94E4-0A68-2F622E29FA3F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C427DDE2-666D-CB64-56EB-31212BA47B2C" name="CMP_MATERIA_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BE01A517-4433-05E6-CE4E-167AFE8B9790"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

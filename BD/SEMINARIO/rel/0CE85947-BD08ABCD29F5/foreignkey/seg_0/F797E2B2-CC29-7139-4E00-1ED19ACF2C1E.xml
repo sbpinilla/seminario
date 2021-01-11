@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F797E2B2-CC29-7139-4E00-1ED19ACF2C1E" containerWithKeyObject="67405F65-FACC-0AFF-BE43-9A9EFCBBC10E" localFKIndex="E54C50DA-59EC-BBCF-2CDE-ADCD9A5F5A3A" name="EA_ACUDIENTE_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<generatorID>753D3215-E238-6629-6D45-290CD7074B8D</generatorID>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>9E82C16E-7171-37B7-8716-3B077D4978B7</importedID>
+<referredTableLongName>ACUDIENTE</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9EB6F141-9F0B-9E0B-1189-452402076C74</referredTableID>
+<keyObject>084750DA-75FF-0A80-F060-0DBE0B24B8AA</keyObject>
+<referredKeyID>084750DA-75FF-0A80-F060-0DBE0B24B8AA</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_ACUDIENTE</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

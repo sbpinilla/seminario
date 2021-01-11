@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E03084D9-2000-168B-779E-FF844498ACAA" name="TIPO_DOCUMENTO">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 19:52:18 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<ordsAlias>table_17</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_TIPO_DOCUMENTO" id="83452A27-A354-4AAC-CB72-80B0AE2BABFA">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 19:53:15 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOMBRE" id="B10B32D3-BA3F-1495-4421-C25C8C16A369">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 19:53:15 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2DCDD7FC-8848-9CB2-D48F-CBFC5FA160D9" name="TIPO_DOCUMENTO_PK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 19:53:15 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="83452A27-A354-4AAC-CB72-80B0AE2BABFA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

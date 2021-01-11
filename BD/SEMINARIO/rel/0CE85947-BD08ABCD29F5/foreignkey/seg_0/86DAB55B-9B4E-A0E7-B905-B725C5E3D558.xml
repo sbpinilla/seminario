@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="86DAB55B-9B4E-A0E7-B905-B725C5E3D558" containerWithKeyObject="CA17AE6A-9755-AA4B-1B3C-21B1DC5B7FB5" localFKIndex="9076459E-8DCC-FA20-5BBC-1C0B77E97A52" name="DHCMP_DIA_HORA_FK">
+<createdBy>sergio</createdBy>
+<createdTime>2021-01-07 18:54:34 UTC</createdTime>
+<ownerDesignName>SEMINARIO</ownerDesignName>
+<importedID>9EBB74D3-E49F-45E7-6269-2E590E7E43FC</importedID>
+<referredTableLongName>DIA_HORA</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6A0CD64E-9DD2-2967-71A0-4735AC8FB122</referredTableID>
+<keyObject>3E922098-7389-ECB3-48AF-5A77D4896AA1</keyObject>
+<referredKeyID>3E922098-7389-ECB3-48AF-5A77D4896AA1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID_DIA_HORA</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>
