@@ -304,5 +304,94 @@ LOWER(NVL(substr(:new.APELLIDOS,1,INSTR(:new.APELLIDOS,' ',1,1)),:new.APELLIDOS)
 :new.DOCUMENTO, :new.ID_TIPO_DOCUMENTO, :new.DOCUMENTO);
  
  end tr_profesor_usuario;
+ 
+
+ 
+------------------- SP -------------------
+------------------------------------------
+ 
+ create or replace PROCEDURE SP_GENERA_HORARIO(V_TIPO_DOC IN NUMBER,
+							V_DOCUMENTO IN VARCHAR2,
+							V_CODIGO OUT NUMBER,
+							V_ERROR OUT VARCHAR2,
+							V_CURSOR OUT SYS_REFCURSOR )
+AS
+
+V_HAY_TIPO_DOC NUMBER(1);
+V_HAY_DOC NUMBER;
+BEGIN
+  --Validar si el tipo de documento ingresado existe
+  SELECT COUNT(*) 
+  INTO V_HAY_TIPO_DOC
+  FROM TIPO_DOCUMENTO
+  WHERE ID_TIPO_DOCUMENTO = V_TIPO_DOC;
+  IF V_HAY_TIPO_DOC > 0 THEN
+    --Validar si el documento ingresado existe
+    SELECT COUNT(*)
+    INTO V_HAY_DOC
+    FROM ESTUDIANTE
+    WHERE DOCUMENTO = V_DOCUMENTO
+    AND ID_TIPO_DOCUMENTO = V_TIPO_DOC;
+    IF V_HAY_DOC >0 THEN 
+      --Realizar la consulta del horario
+      BEGIN
+        OPEN V_CURSOR FOR
+          SELECT E.NOMBRES NOMBRES_ESTUDIANTE,
+                 E.APELLIDOS APELLIDOS_ESTUDIANTE,
+                 C.NOMBRE CURSO,--
+                 --CMP.ID_CURSO_MATERIA_PROFESOR CMP,--
+                 P.NOMBRES NOMBRES_PROFESOR,
+                 P.APELLIDOS APELLIDOS_PROFESOR,
+                 M.NOMBRE NOMBRE_MATERIA,
+                 --DHCMP.ID_DH_CMP, --
+                 --DH.ID_HORA, --
+                 D.NOMBRE DIA,
+                 H.NOMBRE HORA,
+                 (SUBSTR(H.NOMBRE,1,2)+0) HORA_INICIO,
+                 (SUBSTR(H.NOMBRE,1,2)+1) HORA_FIN
+          FROM ESTUDIANTE E RIGHT JOIN CURSO C
+            ON (C.ID_CURSO = E.ID_CURSO) 
+          RIGHT JOIN CURSO_MATERIA_PROFESOR CMP 
+            ON (CMP.ID_CURSO = C.ID_CURSO) 
+          RIGHT JOIN PROFESOR P
+            ON (P.ID_PROFESOR = CMP.ID_PROFESOR)
+          RIGHT JOIN MATERIA M 
+            ON M.ID_MATERIA = CMP.ID_MATERIA 
+          RIGHT JOIN DIA_HORA_CURSO_MATERIA_PROF DHCMP
+            ON DHCMP.ID_CURSO_MATERIA_PROFESOR = CMP.ID_CURSO_MATERIA_PROFESOR 
+          RIGHT JOIN DIA_HORA DH
+            ON DH.ID_DIA_HORA = DHCMP.ID_DIA_HORA 
+          RIGHT JOIN DIA D
+            ON D.ID_DIA = DH.ID_DIA 
+          RIGHT JOIN HORA H
+            ON H.ID_HORA = DH.ID_HORA
+          WHERE E.ID_TIPO_DOCUMENTO = V_TIPO_DOC
+          AND E.DOCUMENTO = V_DOCUMENTO
+          ORDER BY D.ID_DIA,H.ID_HORA;
+
+          V_CODIGO        := 1;
+          V_ERROR := 'Mostrando resultados';
+      EXCEPTION WHEN OTHERS THEN
+
+        V_CODIGO        := 0;
+        V_ERROR := 'No hay datos';
+        OPEN V_CURSOR FOR SELECT NULL FROM dual;
+      END;
+    ELSE
+      V_CODIGO        := -1;
+      V_ERROR := 'No existe estudiante con el documento '||V_DOCUMENTO;
+      OPEN V_CURSOR FOR SELECT NULL FROM dual;
+    END IF;
+  ELSE
+    V_CODIGO        := -2;
+    V_ERROR := 'No existe el tipo de ducumento ingresado';
+    OPEN V_CURSOR FOR SELECT NULL FROM dual;
+  END IF;
+END;
+
+------------------- SP -------------------
+------------------------------------------
+ 
+ 
 
 
