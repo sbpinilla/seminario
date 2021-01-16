@@ -13,21 +13,41 @@ import java.util.Date;
  */
 public class HorarioDTO {
     
-    private String hora;
+    private String estudiante;
+    private String profesor;
+    private String curso;
     private String materia;
     private String dia;
-    private Date fechaInicio;
-    private Date fechaFin;
+    private String hora;
+    private String hinicio;
+    private String hfin;
+
 
     public HorarioDTO() {
     }
 
-    public String getHora() {
-        return hora;
+    public String getEstudiante() {
+        return estudiante;
     }
 
-    public void setHora(String hora) {
-        this.hora = hora;
+    public void setEstudiante(String estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public String getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
     public String getMateria() {
@@ -46,21 +66,30 @@ public class HorarioDTO {
         this.dia = dia;
     }
 
-    public Date getFechaInicio() {
-        return fechaInicio;
+    public String getHora() {
+        return hora;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public void setHora(String hora) {
+        this.hora = hora;
     }
 
-    public Date getFechaFin() {
-        return fechaFin;
+    public String getHinicio() {
+        return hinicio;
     }
 
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setHinicio(String hinicio) {
+        this.hinicio = hinicio;
     }
+
+    public String getHfin() {
+        return hfin;
+    }
+
+    public void setHfin(String hfin) {
+        this.hfin = hfin;
+    }
+
 
 
 

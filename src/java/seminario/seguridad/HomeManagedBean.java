@@ -94,12 +94,15 @@ public class HomeManagedBean implements Serializable {
 
             calInicio.set(Calendar.MONTH, Calendar.JANUARY);
             calFin.set(Calendar.MONTH, Calendar.JANUARY);
+            
+            List<HorarioDTO> horarioDTOs = estudianteFacade.callSP(
+                    usuario.getDocumento(), 
+                    usuario.getIdTipoDocumento().getIdTipoDocumento().toPlainString());
 
-            for (CursoMateriaProfesor cmp : estudiante.getIdCurso().getCursoMateriaProfesorCollection()) {
 
-                for (DiaHoraCursoMateriaProf dhcmp : cmp.getDiaHoraCursoMateriaProfCollection()) {
+                for (HorarioDTO horarioDTO : horarioDTOs) {
 
-                    switch (dhcmp.getIdDiaHora().getIdDia().getNombre()) {
+                    switch (horarioDTO.getDia().toUpperCase()) {
 
                         case "LUNES":
 
@@ -130,7 +133,7 @@ public class HomeManagedBean implements Serializable {
 
                     }
 
-                    String horaParcial = dhcmp.getIdDiaHora().getIdHora().getNombre().split(":")[0];
+                    String horaParcial = horarioDTO.getHora().split(":")[0];
                     int horaInt = Integer.parseInt(horaParcial);
 
                     calInicio.set(Calendar.HOUR_OF_DAY, horaInt);
@@ -139,14 +142,14 @@ public class HomeManagedBean implements Serializable {
                     calFin.set(Calendar.HOUR_OF_DAY, horaInt + 1);
                     Date dateFin = calFin.getTime();
 
-                    DefaultScheduleEvent event = new DefaultScheduleEvent(cmp.getIdMateria().getNombre(), dateInicio, dateFin);
+                    DefaultScheduleEvent event = new DefaultScheduleEvent(horarioDTO.getMateria(), dateInicio, dateFin);
                     eventModel.addEvent(event);
 
                     // Semanas adelante
                     for (int x = 1; x <= 55; x++) {
 
                         DefaultScheduleEvent event2 = new DefaultScheduleEvent(
-                                cmp.getIdMateria().getNombre(),
+                                horarioDTO.getMateria(),
                                 sumarDiasAFecha(dateInicio, x * 7),
                                 sumarDiasAFecha(dateFin, x * 7));
                         eventModel.addEvent(event2);
@@ -155,7 +158,7 @@ public class HomeManagedBean implements Serializable {
 
                 }
 
-            }
+            
         }
 
     }
