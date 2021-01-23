@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "ACUDIENTE")
 @XmlRootElement
+@Cacheable(false)
 @NamedQueries({
     @NamedQuery(name = "Acudiente.findAll", query = "SELECT a FROM Acudiente a")
     , @NamedQuery(name = "Acudiente.findByIdAcudiente", query = "SELECT a FROM Acudiente a WHERE a.idAcudiente = :idAcudiente")

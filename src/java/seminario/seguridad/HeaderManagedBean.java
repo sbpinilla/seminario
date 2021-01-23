@@ -49,6 +49,7 @@ public class HeaderManagedBean implements Serializable {
     public void cerrarSesion() throws IOException {
 
         HttpSession session = SesionUtil.getSession();
+        session.setAttribute("USUARIO", null);
         session.invalidate();
         ExternalContextUtil.getExternalContext().redirect(ExternalContextUtil.getExternalContextPath());
 

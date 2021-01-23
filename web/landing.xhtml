@@ -12,7 +12,7 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
             <meta name="apple-mobile-web-app-capable" content="yes" />
         </f:facet>
-        <title>PrimeFaces Ultima</title>
+        <title>TeacherKitSchools</title>
         <h:outputScript name="js/ripple.js" library="ultima-layout" />
         
 
@@ -22,7 +22,9 @@
         <div class="landing-wrapper">
             <div id="header">
                 <div class="header-top clearfix">
-                    <span class="logo"></span>
+                 
+                     <span style="color: white;font-size: 40px">TeacherKit</span> 
+                    <span style="color: white;font-size: 40px;color: #FF8F00" >Schools</span>
                     
                     <a id="menu-button" href="#">
                        <span class="fa fa-bars"></span>
@@ -34,13 +36,13 @@
                        <li><a href="#promotion"><span>Promoción</span></a></li>
                        <li><a href="#pricing"><span>Precios</span></a></li>
                        <li><a href="#video"><span>Video</span></a></li>
-                       <li><a href="#{request.contextPath}/faces/login.xhtml"><span>ENTRAR</span></a></li>
+                    
                     </ul>
                 </div>
                 
                 <div class="header-content clearfix">
                     <h1>TeacherKitSchools</h1>
-                    <p:button  value="Sign Up Now" styleClass="secondary"/>
+                    <p:button href="#{request.contextPath}/faces/login.xhtml" value="Ingresar Ahora" styleClass="secondary"/>
                 </div>
             </div>
             
@@ -180,11 +182,10 @@
                    <h2>Múltiples idiomas. Múltiples plataformas</h2>
                    <p>Es fácil de instalar y fácil de usar. TeacherKit Student es compatible con dispositivos iPad, iPhone, iPod touch y Android.</p>
                    <div class="video-container">
-                       <iframe src="https://www.youtube.com/embed/B_lYGUtCd0g" frameborder="0" width="560" height="330"></iframe>
+                       <iframe src="https://www.youtube.com/embed/mSibHSsZxBE" frameborder="0" width="560" height="330"></iframe>
                    </div>
                </div>
            </div>
-           
            <div class="footer">
                <div class="footer-content">
                    <div class="ui-g">

@@ -5,23 +5,12 @@
  */
 package seminario.seguridad;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.servlet.http.HttpSession;
-import seminario.entidades.Modulo;
 import seminario.entidades.ModuloRol;
 import seminario.entidades.Usuario;
-import seminario.utils.ExternalContextUtil;
 import seminario.utils.SesionUtil;
 
 /**
@@ -33,19 +22,19 @@ import seminario.utils.SesionUtil;
 public class MenuManagedBean implements Serializable {
 
     private Usuario usuario;
-
+    
     /**
      * Creates a new instance of HeaderManagedBean
      */
     @PostConstruct
     public void init() {
-
+        
     }
 
     public MenuManagedBean() {
 
         usuario = SesionUtil.getUsuario();
-
+        
     }
 
     public boolean verMenu(String modulo) {
@@ -62,6 +51,7 @@ public class MenuManagedBean implements Serializable {
 
         }
 
+         System.out.println("verMenu: "+modulo+":"+verMenu);
         return verMenu;
 
     }
@@ -76,4 +66,4 @@ public class MenuManagedBean implements Serializable {
         this.usuario = usuario;
     }
 
-}
+    }
