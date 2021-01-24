@@ -22,7 +22,7 @@
                         <p:inputText id="nombreUsuario" value="#{usuarioController.selected.nombreUsuario}" title="#{app.EditUsuarioTitle_nombreUsuario}" required="true" requiredMessage="#{app.EditUsuarioRequiredMessage_nombreUsuario}" size="100" maxlength="100"/>
 
                         <p:outputLabel value="#{app.EditUsuarioLabel_clave}" for="clave" />
-                        <p:inputTextarea rows="4" cols="30" id="clave" value="#{usuarioController.selected.clave}" title="#{app.EditUsuarioTitle_clave}" required="true" requiredMessage="#{app.EditUsuarioRequiredMessage_clave}"/>
+                        <p:password id="clave" value="#{usuarioController.selected.clave}" title="#{app.EditUsuarioTitle_clave}" required="true" requiredMessage="#{app.EditUsuarioRequiredMessage_clave}"/>
 
                         <p:outputLabel value="#{app.EditUsuarioLabel_documento}" for="documento" />
                         <p:inputText id="documento" value="#{usuarioController.selected.documento}" title="#{app.EditUsuarioTitle_documento}" size="100" maxlength="100"/>

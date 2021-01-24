@@ -391,6 +391,39 @@ END;
 
 ------------------- SP -------------------
 ------------------------------------------
+
+------------------- TR -------------------
+-- Eliminacion automatica de usuarios 
+------------------------------------------
+ 
+create or replace trigger tr_eli_profesor_usuario
+ BEFORE DELETE 
+ on profesor
+ for each row
+ begin
+    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
+ end tr_profesor_usuario;
+ 
+ -- 
+ 
+create or replace trigger tr_eli_estudiante_usuario
+ BEFORE DELETE 
+ on estudiante
+ for each row
+ begin
+    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
+ end tr_eli_estudiante_usuario;
+ 
+ -- 
+create or replace trigger tr_eli_acudiente_usuario
+ BEFORE DELETE 
+ on acudiente
+ for each row
+ begin
+    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
+ end tr_eli_acudiente_usuario;
+ 
+ 
  
  
 
