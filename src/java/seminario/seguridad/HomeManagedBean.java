@@ -64,14 +64,14 @@ public class HomeManagedBean implements Serializable {
     public void init() {
 
         boolean esAcudiente = false;
-        
+
         List<Estudiante> listEstudiante = new ArrayList<>();
 
         if (usuario.getIdRol().getNombre().equals("ESTUDIANTE")) {
             listEstudiante.add(estudianteFacade.findDocumento(usuario.getDocumento()));
 
         } else if (usuario.getIdRol().getNombre().equals("ACUDIENTE")) {
-           esAcudiente = true ;
+            esAcudiente = true;
             Acudiente acudiente = acudienteFacade.findDocumento(usuario.getDocumento());
 
             for (EstudianteAcudiente estudianteAcudiente : acudiente.getEstudianteAcudienteCollection()) {
@@ -96,74 +96,72 @@ public class HomeManagedBean implements Serializable {
 
             calInicio.set(Calendar.MONTH, Calendar.JANUARY);
             calFin.set(Calendar.MONTH, Calendar.JANUARY);
-            
+
             List<HorarioDTO> horarioDTOs = estudianteFacade.callSP(
-                    estudiante.getDocumento(), 
+                    estudiante.getDocumento(),
                     estudiante.getIdTipoDocumento().getIdTipoDocumento().toPlainString());
 
-            
-                for (HorarioDTO horarioDTO : horarioDTOs) {
+            for (HorarioDTO horarioDTO : horarioDTOs) {
 
-                    switch (horarioDTO.getDia().toUpperCase()) {
+                switch (horarioDTO.getDia().toUpperCase()) {
 
-                        case "LUNES":
+                    case "LUNES":
 
-                            calInicio.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-                            calFin.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                        calInicio.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+                        calFin.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
 
-                            break;
-                        case "MARTES":
+                        break;
+                    case "MARTES":
 
-                            calInicio.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
-                            calFin.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                        calInicio.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+                        calFin.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
 
-                            break;
-                        case "MIÉRCOLES":
-                            calInicio.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
-                            calFin.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                        break;
+                    case "MIÉRCOLES":
+                        calInicio.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
+                        calFin.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);
 
-                            break;
-                        case "JUEVES":
-                            calInicio.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
-                            calFin.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                        break;
+                    case "JUEVES":
+                        calInicio.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+                        calFin.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
 
-                            break;
-                        case "VIERNES":
-                            calInicio.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-                            calFin.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
-                            break;
-
-                    }
-
-                    String horaParcial = horarioDTO.getHora().split(":")[0];
-                    int horaInt = Integer.parseInt(horaParcial);
-
-                    calInicio.set(Calendar.HOUR_OF_DAY, horaInt);
-                    Date dateInicio = calInicio.getTime();
-
-                    calFin.set(Calendar.HOUR_OF_DAY, horaInt + 1);
-                    Date dateFin = calFin.getTime();
-
-                    String lblAcudiente = horarioDTO.getMateria()+" - "+estudiante.getNombres()+" "+estudiante.getApellidos();
-                    
-                    DefaultScheduleEvent event = new DefaultScheduleEvent( 
-                            esAcudiente ? lblAcudiente  :horarioDTO.getMateria(), dateInicio, dateFin);
-                    eventModel.addEvent(event);
-
-                    // Semanas adelante
-                    for (int x = 1; x <= 55; x++) {
-
-                        DefaultScheduleEvent event2 = new DefaultScheduleEvent(
-                                 esAcudiente ? lblAcudiente:horarioDTO.getMateria(),
-                                sumarDiasAFecha(dateInicio, x * 7),
-                                sumarDiasAFecha(dateFin, x * 7));
-                        eventModel.addEvent(event2);
-
-                    }
+                        break;
+                    case "VIERNES":
+                        calInicio.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                        calFin.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+                        break;
 
                 }
 
-            
+                String horaParcial = horarioDTO.getHora().split(":")[0];
+                int horaInt = Integer.parseInt(horaParcial);
+
+                calInicio.set(Calendar.HOUR_OF_DAY, horaInt);
+                Date dateInicio = calInicio.getTime();
+
+                calFin.set(Calendar.HOUR_OF_DAY, horaInt + 1);
+                Date dateFin = calFin.getTime();
+
+                String lblAcudiente = horarioDTO.getMateria() + " - " + estudiante.getNombres() + " " + estudiante.getApellidos();
+
+                DefaultScheduleEvent event = new DefaultScheduleEvent(
+                        esAcudiente ? lblAcudiente : horarioDTO.getMateria(), dateInicio, dateFin);
+                eventModel.addEvent(event);
+
+                // Semanas adelante
+                for (int x = 1; x <= 55; x++) {
+
+                    DefaultScheduleEvent event2 = new DefaultScheduleEvent(
+                            esAcudiente ? lblAcudiente : horarioDTO.getMateria(),
+                            sumarDiasAFecha(dateInicio, x * 7),
+                            sumarDiasAFecha(dateFin, x * 7));
+                    eventModel.addEvent(event2);
+
+                }
+
+            }
+
         }
 
     }
