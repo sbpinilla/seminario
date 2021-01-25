@@ -34,7 +34,7 @@
                         <p:inputText id="direccion" value="#{estudianteController.selected.direccion}" title="#{app.EditEstudianteTitle_direccion}" required="true" requiredMessage="#{app.EditEstudianteRequiredMessage_direccion}" size="100" maxlength="100"/>
 
                         <p:outputLabel value="#{app.EditEstudianteLabel_documento}" for="documento" />
-                        <p:inputText id="documento" value="#{estudianteController.selected.documento}" title="#{app.EditEstudianteTitle_documento}" required="true" requiredMessage="#{app.EditEstudianteRequiredMessage_documento}" size="50" maxlength="50"/>
+                        <p:inputText readonly="true" id="documento" value="#{estudianteController.selected.documento}" title="#{app.EditEstudianteTitle_documento}" required="true" requiredMessage="#{app.EditEstudianteRequiredMessage_documento}" size="50" maxlength="50"/>
 
                         <p:outputLabel value="#{app.EditEstudianteLabel_idCurso}" for="idCurso" />
                         <p:selectOneMenu id="idCurso" value="#{estudianteController.selected.idCurso}" required="true" requiredMessage="#{app.EditEstudianteRequiredMessage_idCurso}" converter="cursoConverter">
@@ -48,7 +48,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{app.EditEstudianteLabel_idTipoDocumento}" for="idTipoDocumento" />
-                        <p:selectOneMenu id="idTipoDocumento" value="#{estudianteController.selected.idTipoDocumento}" required="true" requiredMessage="#{app.EditEstudianteRequiredMessage_idTipoDocumento}" converter="tipoDocumentoConverter">
+                        <p:selectOneMenu editable="false" id="idTipoDocumento" value="#{estudianteController.selected.idTipoDocumento}" required="true" requiredMessage="#{app.EditEstudianteRequiredMessage_idTipoDocumento}" converter="tipoDocumentoConverter">
                             <f:selectItem itemLabel="#{app.SelectOneMessage}"/>
                             <f:selectItems value="#{tipoDocumentoController.items}"
                                            var="idTipoDocumentoItem"

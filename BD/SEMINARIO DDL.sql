@@ -268,42 +268,93 @@ CREATE SEQUENCE SEQ_TIPO_DOCUMENTO INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999
 
 CREATE SEQUENCE SEQ_USUARIO INCREMENT BY 1 MINVALUE 1 MAXVALUE 9999999999999999999999999999999999999999999999999999 NOCYCLE NOCACHE NOORDER ;
 
-create or replace trigger tr_acudiente_usuario
+
+--------------------------------------------------------
+--  DDL for Trigger TR_ACUDIENTE_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TR_ACUDIENTE_USUARIO" 
  AFTER INSERT 
  on acudiente
  for each row
  begin
-  insert into USUARIO VALUES ( SEQ_PROFESOR.NextVal, 3,
-  LOWER(substr(:new.NOMBRES,1,1))||
-LOWER(NVL(substr(:new.APELLIDOS,1,INSTR(:new.APELLIDOS,' ',1,1)),:new.APELLIDOS)),
-:new.DOCUMENTO, :new.ID_TIPO_DOCUMENTO, :new.DOCUMENTO);
+ insert into USUARIO VALUES ( SEQ_USUARIO.NextVal, 3,LOWER(substr(:new.NOMBRES,1,1))||LOWER(NVL(substr(:new.APELLIDOS,1,INSTR(:new.APELLIDOS,' ',1,1)),:new.APELLIDOS)),:new.DOCUMENTO, :new.ID_TIPO_DOCUMENTO, :new.DOCUMENTO);
  end tr_acudiente_usuario;
- 
- 
- create or replace trigger tr_estudiante_usuario
+/
+ALTER TRIGGER "TR_ACUDIENTE_USUARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TR_ELI_ACUDIENTE_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TR_ELI_ACUDIENTE_USUARIO" 
+ BEFORE DELETE 
+ on acudiente
+ for each row
+ begin
+    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
+ end tr_eli_acudiente_usuario;
+
+/
+ALTER TRIGGER "TR_ELI_ACUDIENTE_USUARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TR_ELI_ESTUDIANTE_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TR_ELI_ESTUDIANTE_USUARIO" 
+ BEFORE DELETE 
+ on estudiante
+ for each row
+ begin
+    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
+ end tr_eli_estudiante_usuario;
+
+
+
+/
+ALTER TRIGGER "TR_ELI_ESTUDIANTE_USUARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TR_ELI_PROFESOR_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TR_ELI_PROFESOR_USUARIO" 
+ BEFORE DELETE 
+ on profesor
+ for each row
+ begin
+    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
+ end tr_profesor_usuario;
+
+
+
+/
+ALTER TRIGGER "TR_ELI_PROFESOR_USUARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TR_ESTUDIANTE_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TR_ESTUDIANTE_USUARIO" 
  AFTER INSERT 
  on estudiante
  for each row
  begin
-  insert into USUARIO VALUES ( SEQ_USUARIO.NextVal, 2, 
- 
- LOWER(substr(:new.NOMBRES,1,1))||
-LOWER(NVL(substr(:new.APELLIDOS,1,INSTR(:new.APELLIDOS,' ',1,1)),:new.APELLIDOS)),
-:new.DOCUMENTO, :new.ID_TIPO_DOCUMENTO, :new.DOCUMENTO);
+  insert into USUARIO VALUES ( SEQ_USUARIO.NextVal, 2, LOWER(substr(:new.NOMBRES,1,1))||LOWER(NVL(substr(:new.APELLIDOS,1,INSTR(:new.APELLIDOS,' ',1,1)),:new.APELLIDOS)),:new.DOCUMENTO, :new.ID_TIPO_DOCUMENTO, :new.DOCUMENTO);
  end tr_estudiante_usuario;
- 
- create or replace trigger tr_profesor_usuario
+/
+ALTER TRIGGER "TR_ESTUDIANTE_USUARIO" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger TR_PROFESOR_USUARIO
+--------------------------------------------------------
+
+  CREATE OR REPLACE TRIGGER "TR_PROFESOR_USUARIO" 
  AFTER INSERT 
  on profesor
  for each row
  begin
-  insert into USUARIO VALUES ( SEQ_PROFESOR.NextVal, 5, 
- 
- LOWER(substr(:new.NOMBRES,1,1))||
-LOWER(NVL(substr(:new.APELLIDOS,1,INSTR(:new.APELLIDOS,' ',1,1)),:new.APELLIDOS)),
-:new.DOCUMENTO, :new.ID_TIPO_DOCUMENTO, :new.DOCUMENTO);
- 
+  insert into USUARIO VALUES ( SEQ_USUARIO.NextVal, 5, LOWER(substr(:new.NOMBRES,1,1))||LOWER(NVL(substr(:new.APELLIDOS,1,INSTR(:new.APELLIDOS,' ',1,1)),:new.APELLIDOS)),:new.DOCUMENTO, :new.ID_TIPO_DOCUMENTO, :new.DOCUMENTO);
  end tr_profesor_usuario;
+/
+ALTER TRIGGER "TR_PROFESOR_USUARIO" ENABLE;
+
  
 
  
@@ -392,37 +443,6 @@ END;
 ------------------- SP -------------------
 ------------------------------------------
 
-------------------- TR -------------------
--- Eliminacion automatica de usuarios 
-------------------------------------------
- 
-create or replace trigger tr_eli_profesor_usuario
- BEFORE DELETE 
- on profesor
- for each row
- begin
-    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
- end tr_profesor_usuario;
- 
- -- 
- 
-create or replace trigger tr_eli_estudiante_usuario
- BEFORE DELETE 
- on estudiante
- for each row
- begin
-    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
- end tr_eli_estudiante_usuario;
- 
- -- 
-create or replace trigger tr_eli_acudiente_usuario
- BEFORE DELETE 
- on acudiente
- for each row
- begin
-    delete FROM usuario where documento = :old.DOCUMENTO and ID_TIPO_DOCUMENTO = :old.ID_TIPO_DOCUMENTO;
- end tr_eli_acudiente_usuario;
- 
  
  
  
