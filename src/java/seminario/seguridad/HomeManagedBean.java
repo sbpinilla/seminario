@@ -63,13 +63,15 @@ public class HomeManagedBean implements Serializable {
     @PostConstruct
     public void init() {
 
+        boolean esAcudiente = false;
+        
         List<Estudiante> listEstudiante = new ArrayList<>();
 
         if (usuario.getIdRol().getNombre().equals("ESTUDIANTE")) {
             listEstudiante.add(estudianteFacade.findDocumento(usuario.getDocumento()));
 
         } else if (usuario.getIdRol().getNombre().equals("ACUDIENTE")) {
-
+           esAcudiente = true ;
             Acudiente acudiente = acudienteFacade.findDocumento(usuario.getDocumento());
 
             for (EstudianteAcudiente estudianteAcudiente : acudiente.getEstudianteAcudienteCollection()) {
@@ -96,10 +98,10 @@ public class HomeManagedBean implements Serializable {
             calFin.set(Calendar.MONTH, Calendar.JANUARY);
             
             List<HorarioDTO> horarioDTOs = estudianteFacade.callSP(
-                    usuario.getDocumento(), 
-                    usuario.getIdTipoDocumento().getIdTipoDocumento().toPlainString());
+                    estudiante.getDocumento(), 
+                    estudiante.getIdTipoDocumento().getIdTipoDocumento().toPlainString());
 
-
+            
                 for (HorarioDTO horarioDTO : horarioDTOs) {
 
                     switch (horarioDTO.getDia().toUpperCase()) {
@@ -142,14 +144,17 @@ public class HomeManagedBean implements Serializable {
                     calFin.set(Calendar.HOUR_OF_DAY, horaInt + 1);
                     Date dateFin = calFin.getTime();
 
-                    DefaultScheduleEvent event = new DefaultScheduleEvent(horarioDTO.getMateria(), dateInicio, dateFin);
+                    String lblAcudiente = horarioDTO.getMateria()+" - "+estudiante.getNombres()+" "+estudiante.getApellidos();
+                    
+                    DefaultScheduleEvent event = new DefaultScheduleEvent( 
+                            esAcudiente ? lblAcudiente  :horarioDTO.getMateria(), dateInicio, dateFin);
                     eventModel.addEvent(event);
 
                     // Semanas adelante
                     for (int x = 1; x <= 55; x++) {
 
                         DefaultScheduleEvent event2 = new DefaultScheduleEvent(
-                                horarioDTO.getMateria(),
+                                 esAcudiente ? lblAcudiente:horarioDTO.getMateria(),
                                 sumarDiasAFecha(dateInicio, x * 7),
                                 sumarDiasAFecha(dateFin, x * 7));
                         eventModel.addEvent(event2);

@@ -57,6 +57,12 @@ body .ui-button  {
 	   border-color: green !important;
 	   color: white !important;
 	}
+        
+         .styleClassNotice{
+	   background-color: green !important;
+	   border-color: red !important;
+	   color: white !important;
+	}
 
 
 /* MASTER*/
